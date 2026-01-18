@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+/* Sembunyikan scrollbar untuk semua browser */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Atau jika hanya ingin menyembunyikan scrollbar tapi tetap bisa scroll */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+
+/* Prevent scrolling on body when modal is open */
+body.modal-open {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Ensure modal overlay captures all events */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  touch-action: none; 
+}
+
+/* Allow scrolling only in modal content */
+.modal-content {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar but keep functionality */
+.modal-content::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.modal-content {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.dock-enter-active,
+.dock-leave-active {
+  transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dock-enter-from {
+  opacity: 0;
+  transform: translateY(100px) scale(0.9);
+}
+
+.dock-enter-to {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.dock-leave-from {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.dock-leave-to {
+  opacity: 0;
+  transform: translateY(24px) scale(0.9);
+}
+
+@keyframes soft-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-soft-bounce {
+  animation: soft-bounce 2s ease-in-out infinite;
+}
+

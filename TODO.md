@@ -1,0 +1,5 @@
+- [x] Add moving ball div in template with absolute positioning
+- [x] Add Vue refs for ball and tech icons, data for ball position and hover states
+- [x] Implement mounted lifecycle to start animation interval
+- [x] Add method to update ball position in a path visiting icons and check overlaps
+- [x] Bind dynamic classes to tech icons based on hover states
