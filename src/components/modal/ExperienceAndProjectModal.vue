@@ -6,8 +6,6 @@
         v-if="project"
         class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 modal-overlay"
         @click.self="$emit('close')"
-        @wheel.prevent
-        @touchmove.prevent
       >
         <button
           v-if="projectsList.length > 1"
@@ -283,6 +281,7 @@ const setupModal = async () => {
       wheelMultiplier: 1,
       touchMultiplier: 2,
       infinite: false,
+      autoResize: true,
     });
 
     // RAF for modal Lenis
@@ -338,15 +337,14 @@ const handleImageError = (e) => {
   console.warn("Failed to load image:", e.target.src);
 };
 
-// Your projectsData here...
 const projectsData = {
   "PLN ICON PLUS (PERSERO)": [
     {
       name: "CRM REPORT ULTIMATE",
       description:
-        "Engineered a high-performance reporting engine specifically for PLN's customer service division, focusing on automated generation of critical service-level reports and operational data distribution.",
+        "A core backend reporting service for PLN Indonesia that handles end-to-end file generation processes. The system was migrated from Oracle PL/SQL–centric logic to a Java Spring Boot architecture with PostgreSQL, centralizing business logic at the application layer and significantly improving performance and maintainability.",
       icon: "⚡",
-      image: "/img/projects/ap2t.png", // Path ke gambar di folder public/img/projects/
+      image: "/img/projects/ap2t.png",
       imageTitle: "PLN Customer Service Reporting",
       imageSubtitle: "Automated report generation & distribution",
       technologies: [
@@ -360,18 +358,18 @@ const projectsData = {
       ],
       role: "Backend Developer",
       achievements: [
-        "Architected a scalable microservices-based reporting engine capable of processing 10M+ daily data points for customer service analytics.",
-        "Streamlined the report generation workflow, reducing query execution time by 60% through advanced database optimization.",
-        "Integrated WebSocket protocols to provide live status updates for long-running report generation processes.",
-        "Established technical standards through rigorous code reviews and mentoring to ensure system stability.",
+        "Led the migration of complex reporting logic from Oracle PL/SQL to a Java Spring Boot–based backend with PostgreSQL, improving system maintainability and scalability.",
+        "Centralized business logic at the application layer, reducing database dependency and simplifying future feature development.",
+        "Performed end-to-end performance optimization, including JVM tuning and SQL query optimization, resulting in significantly faster report generation.",
+        "Refactored and optimized legacy reporting workflows to handle large-scale data processing more efficiently and reliably.",
       ],
     },
     {
       name: "CRM REPORT TRANSACTION",
       description:
-        "Developed a robust server-side analytics platform to bridge customer data management with external system integrations, facilitating deep-dive transaction analysis and cross-platform data reconciliation.",
+        "A backend analytics and reporting service for PLN Indonesia focused on transaction analysis, customer data management, and consolidated reporting. The system was migrated from Oracle PL/SQL–based logic to a Java Quarkus architecture with PostgreSQL, moving all business logic into the application layer and enabling high-concurrency, asynchronous processing.",
       icon: "📊",
-      image: "/img/projects/ap2t.png", // Path ke gambar
+      image: "/img/projects/ap2t.png",
       imageTitle: "PLN Transaction Analytics",
       imageSubtitle: "Data integration & customer management hub",
       technologies: [
@@ -385,10 +383,9 @@ const projectsData = {
       ],
       role: "Backend Developer",
       achievements: [
-        "Spearheaded the development of an automated reconciliation module that validates 5M+ daily transactions across integrated PLN systems.",
-        "Built a versatile data integration layer that centralizes customer information from multiple legacy databases into a unified reporting format.",
-        "Optimized server resource allocation and caching, resulting in a 45% reduction in overhead during peak analytical processing.",
-        "Developed a drill-down reporting feature that allows granular analysis of customer transaction history for management decision-making.",
+        "Migrated complex transaction analysis and reporting logic from Oracle PL/SQL to a Java Quarkus–based backend with PostgreSQL, improving scalability and maintainability.",
+        "Implemented asynchronous processing to handle high user concurrency, ensuring stable performance under heavy reporting workloads.",
+        "Optimized application and database performance through query tuning and backend optimization, resulting in faster report generation and improved system responsiveness.",
       ],
     },
   ],
@@ -398,7 +395,7 @@ const projectsData = {
       description:
         "Managed and enhanced an enterprise-scale HR platform for FIFGROUP, focusing on system stability, performance tuning, and the development of specialized modules to support thousands of employees nationwide.",
       icon: "🏢",
-      image: "/img/projects/hcms.png", // Path ke gambar
+      image: "/img/projects/hcms.png",
       imageTitle: "FIFGROUP HCMS",
       imageSubtitle: "Enterprise Human Resource & Operations",
       technologies: [
@@ -426,7 +423,7 @@ const projectsData = {
       description:
         "Developed and maintained OPEX, an internal enterprise application used by BNI Head Office to support operational excellence. The system consolidates multiple internal tools such as automated Excel-based reporting, email scheduling, employee management for out-of-town staff, and other operational support modules.",
       icon: "🏦",
-      image: "/img/projects/opex.png", // Path ke gambar
+      image: "/img/projects/opex.jpg",
       imageTitle: "BNI Internal OPEX System",
       imageSubtitle: "Operational excellence & internal management platform",
       technologies: [
@@ -453,7 +450,7 @@ const projectsData = {
       description:
         "Engineered a high-performance formula management system for R&D operations, enabling seamless formula creation, complex restriction tracking, and contaminant analysis for product formulations.",
       icon: "🧪",
-      image: "/img/projects/indesso.png", // Path ke gambar
+      image: "/img/projects/indesso.png",
       imageTitle: "Indesso Formula Management",
       imageSubtitle: "R&D Formula & Compliance System",
       technologies: [
@@ -480,7 +477,7 @@ const projectsData = {
       description:
         "An internal resource management application designed to map employees to client sites efficiently, optimizing deployment and tracking operations.",
       icon: "📍",
-      image: "/img/projects/pickme.png", // Path ke gambar
+      image: "/img/projects/pickme.png",
       imageTitle: "PICKME CLIENT MAPPING",
       technologies: [
         "Java",
@@ -502,7 +499,7 @@ const projectsData = {
       description:
         "A comprehensive Learning Management System (LMS) for students and educators, facilitating registration, classroom organization, and curriculum management.",
       icon: "🎓",
-      image: "/img/projects/metrodata-academy.png", // Path ke gambar
+      image: "/img/projects/metrodata-academy.png",
       imageTitle: "Metrodata Academy",
       technologies: [
         "Java",
@@ -527,7 +524,7 @@ const projectsData = {
       description:
         "A centralized asset management tool for office administrators to track stock availability, item status, and borrower history.",
       icon: "📦",
-      image: "/img/projects/ims.png", // Path ke gambar
+      image: "/img/projects/ims.png",
       imageTitle: "IMS",
       technologies: [
         "Java",
@@ -551,7 +548,7 @@ const projectsData = {
       description:
         "A centralized management system for religious facilities across Surabaya, enabling organizations to register houses of worship and providing government officials with robust reporting tools.",
       icon: "🕌",
-      image: "/img/projects/sirumi.png", // Path ke gambar
+      image: "/img/projects/sirumi.png",
       imageTitle: "House Of Worship Management System",
       imageSubtitle: "City-wide facility management",
       technologies: ["PHP", "Laravel", "MySQL", "Tailwind CSS", "Chart.js"],
@@ -570,7 +567,7 @@ const projectsData = {
       description:
         "An integrated digital library and e-commerce platform where users can browse an extensive book catalog, read content online, and make direct purchases.",
       icon: "📚",
-      image: "/img/projects/glorindo-group.png", // Path ke gambar
+      image: "/img/projects/glorindo-group.png",
       imageTitle: "Book Catalog & E-Reader",
       imageSubtitle: "Digital Library & E-commerce",
       technologies: ["Javascript", "Express.js", "Vue.js", "MySQL", "Redis"],
@@ -589,7 +586,7 @@ const projectsData = {
       description:
         "A specialized project management tool tailored for the construction industry, inspired by Jira's workflow but optimized for large-scale construction project lifecycles.",
       icon: "🏗️",
-      image: "/img/projects/projenta.png", // Path ke gambar
+      image: "/img/projects/projenta.png",
       imageTitle: "Construction Project Management",
       imageSubtitle: "Jira-style construction management",
       technologies: ["Java", "Spring Boot", "PostgreSQL", "Thymeleaf"],
@@ -608,7 +605,7 @@ const projectsData = {
   //     description:
   //       "Developed a high-performance financial management system for German-based clients, engineered to process and manage large-scale transaction data efficiently within a robust microservices architecture.",
   //     icon: "💶",
-  //     image: "/img/projects/fintech.png", // Path ke gambar
+  //     image: "/img/projects/fintech.png",
   //     imageTitle: "International Finance Engine",
   //     imageSubtitle: "Microservices-based Transaction System",
   //     technologies: [

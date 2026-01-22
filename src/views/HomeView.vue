@@ -26,7 +26,7 @@ document.body.style.overflow = "hidden";
 
   <!-- MAIN CONTENT -->
   <template v-else>
-    <div class="fixed right-8 top-1/2 -translate-y-1/2 z-50">
+    <div class="fixed top-1/2 -translate-y-1/2 z-50 right-2 sm:right-8">
       <VerticalSlider />
     </div>
 
