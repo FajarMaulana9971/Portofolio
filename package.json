@@ -8,18 +8,16 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "dependencies": {
+   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",
     "aos": "^2.3.4",
-    "gsap": "^3.14.2",
     "vue": "^3.5.24",
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.18",
-    "@vitejs/plugin-vue": "^5.1.0",
+    "@vitejs/plugin-vue": "^6.0.1",
     "tailwindcss": "^4.1.18",
-    "vite": "^5.4.0",
-    "rollup": "4.24.0"
+    "vite": "^7.2.4"
   }
 }
