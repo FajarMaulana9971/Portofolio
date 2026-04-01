@@ -10,7 +10,6 @@
   display: none; /* Chrome, Safari, Opera */
 }
 
-/* Atau jika hanya ingin menyembunyikan scrollbar tapi tetap bisa scroll */
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent;
@@ -20,6 +19,15 @@
   background: transparent;
 }
 
+/* ============================================
+   CRITICAL: Allow touch scrolling on mobile
+   Lenis atau VerticalSlider bisa override ini
+   ============================================ */
+html,
+body {
+  touch-action: pan-y !important;
+  overscroll-behavior-y: auto;
+}
 
 /* Prevent scrolling on body when modal is open */
 body.modal-open {
@@ -34,7 +42,6 @@ body.modal-open {
   position: fixed;
   inset: 0;
   z-index: 50;
-  /* touch-action: none;  */
 }
 
 /* Allow scrolling only in modal content */
@@ -42,6 +49,7 @@ body.modal-open {
   overflow-y: auto !important;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
   position: relative;
 }
 
@@ -93,4 +101,3 @@ body.modal-open {
 .animate-soft-bounce {
   animation: soft-bounce 2s ease-in-out infinite;
 }
-

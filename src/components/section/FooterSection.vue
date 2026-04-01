@@ -4,11 +4,6 @@
       <div
         class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm"
       >
-        <!-- Left -->
-        <p class="text-center sm:text-left">
-          © {{ new Date().getFullYear() }} Fajar. All rights reserved.
-        </p>
-
         <!-- Right -->
         <p class="flex items-center gap-1">
           Created with

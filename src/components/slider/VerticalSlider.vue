@@ -5,7 +5,9 @@
       ref="sliderRef"
       class="relative w-2 h-32 bg-gray-700 rounded-full cursor-pointer select-none"
       @mousedown="handleMouseDown"
-      @touchstart="handleTouchStart"
+      @touchstart.prevent.stop="handleTouchStart"
+      @touchmove.prevent.stop="handleTouchMoveOnElement"
+      @touchend.stop="handleTouchEnd"
     >
       <!-- Fill Bar -->
       <div
@@ -65,7 +67,7 @@ const updateScrollProgress = () => {
   scrollProgress.value = Math.min(100, Math.max(0, progress));
 };
 
-// Update scroll from slider
+// Update scroll from slider position
 const updateScrollFromSlider = (clientY) => {
   if (!sliderRef.value) return;
 
@@ -80,8 +82,7 @@ const updateScrollFromSlider = (clientY) => {
     const scrollTo = (percentage / 100) * maxScroll;
     container.scrollTo({ top: scrollTo, behavior: "auto" });
   } else {
-    const documentHeight =
-      document.documentElement.scrollHeight - window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
     const scrollTo = (percentage / 100) * documentHeight;
     window.scrollTo({ top: scrollTo, behavior: "auto" });
   }
@@ -96,42 +97,34 @@ const handleMouseDown = (e) => {
 };
 
 const handleMouseMove = (e) => {
-  if (isDragging.value) {
-    e.preventDefault();
-    e.stopPropagation();
-    updateScrollFromSlider(e.clientY);
-  }
+  if (!isDragging.value) return;
+  e.preventDefault();
+  updateScrollFromSlider(e.clientY);
 };
 
 const handleMouseUp = () => {
   isDragging.value = false;
 };
 
-// Touch events
+// Touch events - ALL handled directly on the element, NO global touchmove listener
 const handleTouchStart = (e) => {
-  e.preventDefault();
-  e.stopPropagation();
   isDragging.value = true;
   updateScrollFromSlider(e.touches[0].clientY);
 };
 
-const handleTouchMove = (e) => {
-  if (isDragging.value) {
-    e.preventDefault();
-    e.stopPropagation();
-    updateScrollFromSlider(e.touches[0].clientY);
-  }
+const handleTouchMoveOnElement = (e) => {
+  // This only fires when touch moves ON the slider element itself
+  updateScrollFromSlider(e.touches[0].clientY);
 };
 
 const handleTouchEnd = () => {
   isDragging.value = false;
 };
 
-// Watch container changes
+// Watch scroll container changes
 watch(
   () => props.scrollContainer,
   (newContainer, oldContainer) => {
-    // Remove old listener
     if (oldContainer && scrollListener) {
       oldContainer.removeEventListener("scroll", scrollListener);
     }
@@ -139,28 +132,23 @@ watch(
       window.removeEventListener("scroll", scrollListener);
     }
 
-    // Add new listener
     scrollListener = updateScrollProgress;
 
     if (newContainer) {
-      newContainer.addEventListener("scroll", scrollListener, {
-        passive: true,
-      });
+      newContainer.addEventListener("scroll", scrollListener, { passive: true });
     } else {
       window.addEventListener("scroll", scrollListener, { passive: true });
     }
 
-    // Initial update
     updateScrollProgress();
   },
   { immediate: true }
 );
 
 onMounted(() => {
+  // Only mouse events globally - NO global touch listeners at all
   window.addEventListener("mousemove", handleMouseMove);
   window.addEventListener("mouseup", handleMouseUp);
-  window.addEventListener("touchmove", handleTouchMove, { passive: false });
-  window.addEventListener("touchend", handleTouchEnd);
 });
 
 onUnmounted(() => {
@@ -174,8 +162,6 @@ onUnmounted(() => {
 
   window.removeEventListener("mousemove", handleMouseMove);
   window.removeEventListener("mouseup", handleMouseUp);
-  window.removeEventListener("touchmove", handleTouchMove);
-  window.removeEventListener("touchend", handleTouchEnd);
 });
 </script>
 
