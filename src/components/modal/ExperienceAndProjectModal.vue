@@ -61,9 +61,9 @@
           <!-- Modal Content - native scroll on mobile, Lenis on desktop -->
           <div
             ref="modalContentRef"
-            class="p-4 md:p-6 overflow-y-auto max-h-[calc(90vh-80px)] modal-content"
+            class="p-4 md:p-6 overflow-y-auto max-h-[calc(90vh-130px)] modal-content"
           >
-            <Transition name="slide" mode="out-in">
+            <Transition name="slide" mode="out-in" @after-enter="onSlideTransitionEnd">
               <div :key="currentIndex">
                 <p class="text-gray-300 mb-6 text-center text-sm md:text-base">
                   {{ currentProjectData.description }}
@@ -71,7 +71,7 @@
 
                 <!-- Project Image -->
                 <div class="bg-gray-700/50 rounded-lg overflow-hidden border border-gray-600 mb-6">
-                  <div v-if="currentProjectData.image" class="relative bg-gradient-to-br from-gray-800 to-gray-900">
+                  <div v-if="currentProjectData.image" class="relative bg-gradient-to-br from-gray-800 to-gray-900 h-64 md:h-110">
                     <img
                       :src="currentProjectData.image"
                       :alt="currentProjectData.name"
@@ -88,7 +88,6 @@
                   </div>
                   <div v-else class="aspect-video flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
                     <div class="text-center">
-                      <div class="text-6xl mb-4">{{ currentProjectData.icon }}</div>
                       <p class="text-gray-400">{{ currentProjectData.imageTitle }}</p>
                       <p class="text-gray-500 text-sm mt-2">{{ currentProjectData.imageSubtitle }}</p>
                     </div>
@@ -109,9 +108,11 @@
                       </span>
                     </div>
                   </div>
-                  <div class="bg-gray-700/30 rounded-lg p-4 border border-gray-600">
+                  <div class="bg-gray-700/30 rounded-lg p-4 border border-gray-600 flex flex-col items-center justify-center min-h-[120px]">
                     <h4 class="text-emerald-400 font-semibold mb-2 text-center">Role</h4>
-                    <p class="text-center text-gray-300 text-sm">{{ currentProjectData.role }}</p>
+                      <div class="flex-1 flex items-center justify-center">
+                    <p class="text-center text-white font-semibold text-sm md:text-base tracking-wide px-2">{{ currentProjectData.role }}</p>
+                  </div>
                   </div>
                 </div>
 
@@ -186,6 +187,7 @@ const setupModal = async () => {
   if (lenis) lenis.stop();
 
   await nextTick();
+  await nextTick();
 
   // Only use Lenis on desktop
   if (!isMobile() && modalContentRef.value && !modalLenis) {
@@ -231,48 +233,48 @@ const handleImageError = (e) => {
 };
 
 const projectsData = {
-  "PLN ICON PLUS (PERSERO)": [
+  "PLN ICON PLUS": [
     {
       name: "CRM REPORT ULTIMATE",
-      description: "A core backend reporting service for PLN Indonesia that handles end-to-end file generation processes. The system was migrated from Oracle PL/SQL–centric logic to a Java Spring Boot architecture with PostgreSQL, centralizing business logic at the application layer and significantly improving performance and maintainability.",
-      icon: "⚡",
+      description: "CRM Report Ultimate is one of the reporting services within AP2T (Aplikasi Pelayanan Pelanggan Terpusat), a centralized enterprise platform used by PT PLN (Persero) to handle end-to-end customer and billing operations across Indonesia. The service is designed to support large-scale report generation and distribution, enabling operational and analytical insights for high-volume processes such as billing, meter data processing, and customer lifecycle management",
       image: "/img/projects/ap2t.png",
       imageTitle: "PLN Customer Service Reporting",
       imageSubtitle: "Automated report generation & distribution",
-      technologies: ["Java", "Spring Boot", "PostgreSQL", "Oracle DB", "Redis", "Apache Kafka", "Microservices"],
+      technologies: ["Java", "Quarkus", "PostgreSQL", "Oracle DB", "Redis", "Apache Kafka", "PL SQL", "Microservices", "Apache Nexus Repository", "Jesper Reports", "Crystal Reports", "Docker"],
       role: "Backend Developer",
       achievements: [
-        "Led the migration of complex reporting logic from Oracle PL/SQL to a Java Spring Boot–based backend with PostgreSQL, improving system maintainability and scalability.",
-        "Centralized business logic at the application layer, reducing database dependency and simplifying future feature development.",
-        "Performed end-to-end performance optimization, including JVM tuning and SQL query optimization, resulting in significantly faster report generation.",
-        "Refactored and optimized legacy reporting workflows to handle large-scale data processing more efficiently and reliably.",
+        "Led the migration from a Java Spring Boot and Oracle PL/SQL–centric architecture to a Java Quarkus–based backend with PostgreSQL, consolidating business logic into the application layer.",
+        "Re-architected the system using reactive programming to improve throughput and ensure stable performance under high-volume reporting workloads.",
+        "Mentored junior developers by providing technical guidance, code reviews, and hands-on support to resolve development challenges.",
+        "Optimized database design by applying selective denormalization and removing unused tables, improving query efficiency and reducing system complexity.",
+        "Performed end-to-end performance tuning across application and database layers, significantly enhancing report generation speed and system responsiveness.",
       ],
     },
     {
       name: "CRM REPORT TRANSACTION",
-      description: "A backend analytics and reporting service for PLN Indonesia focused on transaction analysis, customer data management, and consolidated reporting. The system was migrated from Oracle PL/SQL–based logic to a Java Quarkus architecture with PostgreSQL, moving all business logic into the application layer and enabling high-concurrency, asynchronous processing.",
-      icon: "📊",
-      image: "/img/projects/ap2t.png",
+      description: "CRM Report Transaction is a backend service within the PLN Mobile ecosystem, designed to manage and process customer transaction data. It serves as a core component for handling transaction-related reporting, enabling data integration across multiple internal systems, and providing reliable data for other services within PLN Mobile.",
+      image: "/img/projects/pln-mobile.png",
       imageTitle: "PLN Transaction Analytics",
       imageSubtitle: "Data integration & customer management hub",
-      technologies: ["Java", "Quarkus", "PostgreSQL", "Oracle DB", "Redis", "Apache Kafka", "Microservices"],
+      technologies: ["Java", "Quarkus", "PostgreSQL", "Oracle DB", "Redis", "Apache Kafka", "GRPC" ,"PL SQL", "Microservices", "Apache Nexus Repository", "GRPC", "Docker"],
       role: "Backend Developer",
       achievements: [
-        "Migrated complex transaction analysis and reporting logic from Oracle PL/SQL to a Java Quarkus–based backend with PostgreSQL, improving scalability and maintainability.",
-        "Implemented asynchronous processing to handle high user concurrency, ensuring stable performance under heavy reporting workloads.",
-        "Optimized application and database performance through query tuning and backend optimization, resulting in faster report generation and improved system responsiveness.",
+        "Migrated transaction processing logic from Oracle PL/SQL and Java Spring Boot into a Java Quarkus backend with PostgreSQL, centralizing business logic within the service layer.",
+        "Implemented a fully reactive programming model to handle high concurrency, improving system scalability and response time for transaction-heavy operations.",
+        "Collaborated with and mentored junior developers, assisting in troubleshooting issues and ensuring consistent development practices.",
+        "Enhanced data model efficiency by denormalizing relevant tables and eliminating unused structures to streamline data processing.",
+        "Continuously tuned application and database performance, resulting in more efficient transaction processing and improved system stability.",
       ],
     },
   ],
   "PT FIFGROUP": [
     {
       name: "HUMAN CAPITAL MANAGEMENT SYSTEM",
-      description: "Managed and enhanced an enterprise-scale HR platform for FIFGROUP, focusing on system stability, performance tuning, and the development of specialized modules to support thousands of employees nationwide.",
-      icon: "🏢",
+      description: "HCMS (Human Capital Management System) at FIFGROUP is an enterprise platform that manages the entire lifecycle and operations of thousands of employees across Indonesia. The system is designed with a robust microservices architecture to handle critical HR business processes, ranging from centralized data management and payroll systems to automated information distribution. ",
       image: "/img/projects/hcms.png",
       imageTitle: "FIFGROUP HCMS",
       imageSubtitle: "Enterprise Human Resource & Operations",
-      technologies: ["Java", "Spring Boot", "Oracle DB", "Redis", "Kafka", "Microservices", "Java Mail Sender", "Scheduler"],
+      technologies: ["Java", "Spring Boot", "Oracle DB", "Redis", "Kafka", "Microservices", "Java Mail Sender", "Scheduler", "Apache POI", "Docker", "Gitlab", "JUnit"],
       role: "Backend Developer",
       achievements: [
         "Engineered an automated email scheduling system to handle high-volume internal notifications and payroll alerts with guaranteed delivery.",
@@ -282,15 +284,14 @@ const projectsData = {
       ],
     },
   ],
-  "PT BNI (PERSERO)": [
+  "PT BNI": [
     {
       name: "OPEX MANAGEMENT SYSTEM",
-      description: "Developed and maintained OPEX, an internal enterprise application used by BNI Head Office to support operational excellence. The system consolidates multiple internal tools such as automated Excel-based reporting, email scheduling, employee management for out-of-town staff, and other operational support modules.",
-      icon: "🏦",
+      description: "OPEX Monitoring Application is internal enterprise application used by BNI Head Office to support operational excellence. The system consolidates multiple internal tools such as automated Excel-based reporting, email scheduling, employee management for out-of-town staff, and other operational support modules.",
       image: "/img/projects/opex.jpg",
       imageTitle: "BNI Internal OPEX System",
       imageSubtitle: "Operational excellence & internal management platform",
-      technologies: ["PHP", "PostgreSQL", "IBM MQ", "Redis", "Mail Sender"],
+      technologies: ["PHP", "PDO", "PostgreSQL", "Predis", "PHPMailer"],
       role: "Backend Developer",
       achievements: [
         "Built and enhanced internal operational modules used by head office teams",
@@ -304,29 +305,30 @@ const projectsData = {
   "PT INDESSO CULINAROMA INTERNATIONAL": [
     {
       name: "E - FORMULA",
-      description: "Engineered a high-performance formula management system for R&D operations, enabling seamless formula creation, complex restriction tracking, and contaminant analysis for product formulations.",
-      icon: "🧪",
+      description: "E-Formula is an integrated application used for managing product formula creation at PT Indesso Culinaroma International. It enables end-to-end formula management, including material composition setup, contaminant control, and regulatory compliance handling. The application consolidates two existing systems (Culinaroma and Cheezaroma) into a single unified platform to streamline and standardize R&D processes.",
       image: "/img/projects/indesso.png",
       imageTitle: "Indesso Formula Management",
       imageSubtitle: "R&D Formula & Compliance System",
-      technologies: ["Java", "Spring Boot", "SQL SERVER", "LDAP", "Redis", "Caffeine", "Scheduler"],
-      role: "Backend Developer",
+      technologies: ["Java", "Spring Boot", "SQL server", "LDAP", "Redis", "Caffeine", "Scheduler", "kafka", "Apache POI", "Apache Nifi", "Apache Nexus Repository", "kafka"],
+      role: "Backend Developer & Technical Lead",
       achievements: [
+        "Migrated and developed the application using Java Spring Boot with a microservices architecture.",
+        "Led and mentored junior Java backend developers, including providing technical guidance and code reviews.",
         "Optimized system architecture to ensure high-speed performance when processing large-scale formula datasets and complex calculations.",
-        "Developed a robust restriction and contaminant management module to ensure regulatory compliance and product safety.",
+        "Implemented Apache Kafka for event streaming to enable asynchronous communication between services.",
         "Engineered high-efficiency Excel generation and bulk data import features, significantly reducing processing time for R&D teams.",
         "Implemented multi-level caching using Redis and Caffeine to minimize database load and enhance application responsiveness.",
+        "Performed data migration from existing legacy systems into the new unified platform."
       ],
     },
   ],
   "PT Metrodata": [
     {
       name: "PICKME",
-      description: "An internal resource management application designed to map employees to client sites efficiently, optimizing deployment and tracking operations.",
-      icon: "📍",
+      description: "PickMe is a Talent Sourcing and Recruitment platform developed by PT Mitra Integrasi Informatika (MII) to connect IT talent providers with companies in need of skilled professionals. The application is designed to modernize the recruitment process through the management of a curated talent database based on expertise, in-depth candidate profile exploration including portfolios and certifications, and integrated interview scheduling features.",
       image: "/img/projects/pickme.png",
       imageTitle: "PICKME CLIENT MAPPING",
-      technologies: ["Java", "Spring Boot", "MYSQL", "Thymeleaf", "Java Mail Sender"],
+      technologies: ["Java", "Spring Boot", "mySQL", "Caffeine", "Java Mail Sender", "Thymeleaf", "Tailwind CSS"],
       role: "Fullstack Developer",
       achievements: [
         "Successfully migrated legacy features from external applications into the PickMe ecosystem.",
@@ -337,11 +339,10 @@ const projectsData = {
     },
     {
       name: "Metrodata Academy",
-      description: "A comprehensive Learning Management System (LMS) for students and educators, facilitating registration, classroom organization, and curriculum management.",
-      icon: "🎓",
+      description: "Metrodata Academy is a Learning Management System (LMS) and digital talent development platform managed by PT Mitra Integrasi Informatika (MII), serving as the central hub for IT education within the Metrodata Group. It is designed to train, certify, and prepare IT talent for industry needs through structured learning programs. The platform provides a wide range of IT courses, participant management for programs such as internships and bootcamps, automated digital certification upon completion, and integration with recruitment platforms like PickMe to streamline talent distribution into the workforce.",
       image: "/img/projects/metrodata-academy.png",
       imageTitle: "Metrodata Academy",
-      technologies: ["Java", "Spring Boot", "MYSQL", "Redis", "Kafka", "Java Scheduler", "Java Mail Sender", "Microservices"],
+      technologies: ["Java", "Spring Boot", "mySQL", "Redis", "Apache Kafka", "Java Scheduler", "Java Mail Sender", "Microservices", "Spring Boot Scheduler", "Midtrans"],
       role: "Backend Developer",
       achievements: [
         "Led the development of complex backend services requiring high scalability and rigorous security standards.",
@@ -352,11 +353,10 @@ const projectsData = {
     },
     {
       name: "Inventory Management System",
-      description: "A centralized asset management tool for office administrators to track stock availability, item status, and borrower history.",
-      icon: "📦",
+      description: "Inventory Management System is an internal enterprise application used within PT Mitra Integrasi Informatika (MII) to systematically track and manage company assets and inventory. As a leading system integrator, MII utilizes this system to monitor the movement of hardware such as servers, laptops, and network devices as well as software licenses used internally or delivered to clients. The system includes features such as end to end asset tracking from warehouse intake to allocation and delivery, automated stock monitoring with low level alerts, detailed audit trails for tracking changes and asset movements, and reporting dashboards that provide insights into asset value, depreciation, and periodic stock mutations.",
       image: "/img/projects/ims.png",
       imageTitle: "IMS",
-      technologies: ["Java", "Spring Boot", "MYSQL", "Thymeleaf", "Java Mail Sender"],
+      technologies: ["Java", "Spring Boot", "mySQL", "Caffeine", "Java Mail Sender", "Crystal Reports", "Fast Excel", "Spring Boot Scheduler"],
       role: "Fullstack Developer",
       achievements: [
         "Developed a comprehensive tracking system for asset lifecycle management, from procurement to borrowing status.",
@@ -370,11 +370,10 @@ const projectsData = {
     {
       name: "SIRUMI",
       description: "A centralized management system for religious facilities across Surabaya, enabling organizations to register houses of worship and providing government officials with robust reporting tools.",
-      icon: "🕌",
       image: "/img/projects/sirumi.png",
       imageTitle: "House Of Worship Management System",
       imageSubtitle: "City-wide facility management",
-      technologies: ["PHP", "Laravel", "MySQL", "Tailwind CSS", "Chart.js"],
+      technologies: ["PHP", "Laravel", "mySQL", "Tailwind CSS", "Chart.js"],
       role: "Fullstack Developer",
       achievements: [
         "Developed a streamlined registration workflow for religious organizations to register their facilities legally.",
@@ -388,11 +387,10 @@ const projectsData = {
     {
       name: "Glorindo Book Catalog",
       description: "An integrated digital library and e-commerce platform where users can browse an extensive book catalog, read content online, and make direct purchases.",
-      icon: "📚",
       image: "/img/projects/glorindo-group.png",
       imageTitle: "Book Catalog & E-Reader",
       imageSubtitle: "Digital Library & E-commerce",
-      technologies: ["Javascript", "Express.js", "Vue.js", "MySQL", "Redis"],
+      technologies: ["Javascript", "Express.js", "Vue.js", "mySQL", "Redis"],
       role: "Fullstack Developer",
       achievements: [
         "Architected an end-to-end book management system featuring an online reader and shopping cart functionality.",
@@ -406,7 +404,6 @@ const projectsData = {
     {
       name: "Projenta",
       description: "A specialized project management tool tailored for the construction industry, inspired by Jira's workflow but optimized for large-scale construction project lifecycles.",
-      icon: "🏗️",
       image: "/img/projects/projenta.png",
       imageTitle: "Construction Project Management",
       imageSubtitle: "Jira-style construction management",
@@ -424,11 +421,10 @@ const projectsData = {
     {
       name: "Personal Pal",
       description: "Personal Pal is a personal daily tracking application designed to help users manage their finances and personal well-being. The app allows users to record daily income and expenses, track savings and debts, and automatically generate monthly reports that are sent directly to the user's email. In addition to financial tracking, Personal Pal includes health monitoring features such as weekly health logs and progress tracking, as well as a menstrual cycle tracker for female users.",
-      icon: "💶",
       image: "/img/projects/personal-pal.png",
       imageTitle: "Personal Daily Management App",
       imageSubtitle: "Finance, Health, and Lifestyle Tracking",
-      technologies: ["JavaScript", "Node.js", "Express.js", "MySQL", "Redis", "Kafka", "Microservices", "JWT"],
+      technologies: ["JavaScript", "Node.js", "Express.js", "mySQL", "Redis", "Kafka", "Microservices", "JWT"],
       role: "Backend Developer",
       achievements: [
         "Built backend services for daily financial tracking, including income, expenses, savings, and debt records.",
@@ -443,7 +439,6 @@ const projectsData = {
     {
       name: "Spendly",
       description: "Spendly is a mobile-first expense management application designed for couples to collaboratively manage shared finances. The application allows both partners to record expenses, assign and track payable balances between each other, and maintain transparency in daily spending.",
-      icon: "💶",
       image: "/img/projects/spendly.png",
       imageTitle: "Couple Expense Management App",
       imageSubtitle: "Shared Finance Tracking for Partners",
@@ -466,7 +461,6 @@ const projectsData = {
     {
       name: "Serverapp Initialzr",
       description: "Serverapp Initialzr is a community-driven backend generator platform designed to accelerate the development of scalable backend applications. The platform allows developers to generate ready-to-use backend projects with customizable configurations such as base entity structure, JWT authentication, standardized API response format, and other common backend patterns.",
-      icon: "⚙️",
       image: "/img/projects/Spring-Intializr.png",
       imageTitle: "Backend Generator Platform",
       imageSubtitle: "Automated Backend Setup for Multiple Tech Stacks",
@@ -496,7 +490,6 @@ const currentProjectData = computed(() => {
     return {
       name: "Project Not Found",
       description: "Project details coming soon...",
-      icon: "📊",
       image: null,
       imageTitle: "Project Screenshot",
       imageSubtitle: "Image placeholder - to be added",
@@ -521,12 +514,17 @@ watch(() => props.project, () => {
   imageLoading.value = true;
 });
 
-watch(currentIndex, () => {
+watch(currentIndex, async () => {
   imageLoading.value = true;
   if (modalLenis) {
     modalLenis.scrollTo(0, { immediate: true });
   } else if (modalContentRef.value) {
     modalContentRef.value.scrollTop = 0;
+  }
+
+  await nextTick();
+  if(modalLenis){
+    modalLenis.resize();
   }
 });
 
@@ -555,6 +553,12 @@ onUnmounted(() => {
   cleanupModal();
   window.removeEventListener("keydown", handleKeydown);
 });
+
+const onSlideTransitionEnd = () => {
+  if (modalLenis) {
+    modalLenis.resize();
+  }
+};
 </script>
 
 <style scoped>

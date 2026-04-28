@@ -34,14 +34,14 @@
                     <img src="/img/projects/must.jpg" alt="Logo PT MUST" class="w-full h-full object-contain p-2 rounded-lg" />
                   </div>
                   <h3 class="text-xl md:text-2xl font-bold text-white mb-2">PT Mitra Utama Solusi Telematika</h3>
-                  <p class="text-emerald-400 font-semibold mb-1 text-sm md:text-base">SENIOR JAVA DEVELOPER</p>
+                  <p class="text-emerald-400 font-semibold mb-1 text-sm md:text-base">SENIOR SOFTWARE ENGINER</p>
                   <p class="text-gray-400 text-sm">Oct 2025 - Apr 2026</p>
                 </div>
                 <div class="mt-4 md:mt-6">
                   <p class="text-gray-300 text-sm mb-4 text-center">Key Client Projects</p>
                   <div class="flex flex-wrap justify-center gap-2">
-                    <button @click="openModal('PLN ICON PLUS (PERSERO)')" class="relative group bg-gray-700/50 hover:bg-gray-600/50 text-white px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border border-gray-600 hover:border-emerald-400 text-sm">
-                      PLN ICON PLUS (PERSERO)
+                    <button @click="openModal('PLN ICON PLUS')" class="relative group bg-gray-700/50 hover:bg-gray-600/50 text-white px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border border-gray-600 hover:border-emerald-400 text-sm">
+                      PT Indonesia Comnets Plus
                       <span class="absolute -top-3 -right-3 min-w-6 h-6 bg-emerald-500/20 text-emerald-300 text-xs font-bold rounded-full flex items-center justify-center shadow-md shadow-emerald-500/40 ring-2 ring-gray-900">2</span>
                     </button>
                   </div>
@@ -75,13 +75,13 @@
                 <div class="mt-4 md:mt-6">
                   <p class="text-gray-300 text-sm mb-4 text-center">Key Client Projects</p>
                   <div class="flex flex-wrap justify-center gap-2">
-                    <button @click="openModal('PT BNI (PERSERO)')" class="group bg-gray-700/50 hover:bg-gray-600/50 text-white px-3 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border border-gray-600 hover:border-emerald-400 text-sm">PT BNI (PERSERO)</button>
                     <button @click="openModal('PT Metrodata')" class="relative group bg-gray-700/50 hover:bg-gray-600/50 text-white px-3 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border border-gray-600 hover:border-emerald-400 text-sm">
-                      PT METRODATA
+                      PT Metrodata Electronics Tbk
                       <span class="absolute -top-3 -right-3 min-w-[1.5rem] h-6 bg-emerald-500/20 text-emerald-300 text-xs font-bold rounded-full flex items-center justify-center shadow-md shadow-emerald-500/40 ring-2 ring-gray-900">3</span>
                     </button>
-                    <button @click="openModal('PT FIFGROUP')" class="group bg-gray-700/50 hover:bg-gray-600/50 text-white px-3 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border border-gray-600 hover:border-emerald-400 text-sm">PT FIFGROUP</button>
-                    <button @click="openModal('PT INDESSO CULINAROMA INTERNATIONAL')" class="group bg-gray-700/50 hover:bg-gray-600/50 text-white px-3 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border border-gray-600 hover:border-emerald-400 text-sm">PT INDESSO</button>
+                    <button @click="openModal('PT FIFGROUP')" class="group bg-gray-700/50 hover:bg-gray-600/50 text-white px-3 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border border-gray-600 hover:border-emerald-400 text-sm">PT Federal International Finance</button>
+                    <button @click="openModal('PT INDESSO CULINAROMA INTERNATIONAL')" class="group bg-gray-700/50 hover:bg-gray-600/50 text-white px-3 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border border-gray-600 hover:border-emerald-400 text-sm">PT Indesso Culinaroma International</button>
+                    <button @click="openModal('PT BNI')" class="group bg-gray-700/50 hover:bg-gray-600/50 text-white px-3 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border border-gray-600 hover:border-emerald-400 text-sm">PT Bank Negara Indonesia (Persero) Tbk</button>
                   </div>
                 </div>
               </div>
@@ -105,7 +105,7 @@
                   <div class="flex flex-wrap justify-center gap-2">
                     <button @click="openModal('Glorindo Group')" class="group bg-gray-700/50 hover:bg-gray-600/50 text-white px-3 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border border-gray-600 hover:border-emerald-400 text-sm">Glorindo Group</button>
                     <button @click="openModal('Eka Berkat Jaya')" class="group bg-gray-700/50 hover:bg-gray-600/50 text-white px-3 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border border-gray-600 hover:border-emerald-400 text-sm">Eka Berkat Jaya</button>
-                    <button @click="openModal('Surabaya City Government')" class="group bg-gray-700/50 hover:bg-gray-600/50 text-white px-3 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border border-gray-600 hover:border-emerald-400 text-sm">Surabaya City Gov</button>
+                    <button @click="openModal('Surabaya City Government')" class="group bg-gray-700/50 hover:bg-gray-600/50 text-white px-3 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border border-gray-600 hover:border-emerald-400 text-sm">Surabaya City Government</button>
                   </div>
                 </div>
               </div>
