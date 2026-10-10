@@ -233,14 +233,51 @@ const handleImageError = (e) => {
 };
 
 const projectsData = {
+  "ASTRA INTERNATIONAL": [
+    {
+      name: "Digiroom by Auto2000",
+      description:
+        "Digiroom by Auto2000 is an automotive e-commerce platform that enables customers to purchase Toyota vehicles, spare parts, and accessories, as well as access various after-sales services. Developed within the Auto2000 digital ecosystem, the platform integrates commerce, payment processing, product search, customer engagement, and other business services to deliver a seamless end-to-end customer experience. My role focused on developing and maintaining backend services across SAP Commerce Cloud (Hybris) and Spring Boot microservices, integrating payment gateways and event-driven systems, implementing search capabilities, and supporting the reliability and scalability of a high-traffic e-commerce platform.",
+      image: "/img/projects/digiroom.png",
+      imageTitle: "Digiroom by Auto2000",
+      imageSubtitle: "Scalable automotive e-commerce & backend engineering",
+      technologies: [
+        "Java",
+        "Spring Boot",
+        "SAP Commerce Cloud (Hybris)",
+        "SAP Emarsys",
+        "Apache Kafka",
+        "Apache Solr",
+        "Redis",
+        "Microservices",
+        "Payment Gateway Integration",
+        "OCC API",
+        "Azure DevOps",
+        "SonarCloud",
+        "Docker",
+        "SQL"
+      ],
+      role: "Java & SAP Developer",
+      achievements: [
+        "Developed and maintained backend services in SAP Commerce Cloud (Hybris), implementing business logic and REST APIs to support core e-commerce functionalities and customer transactions.",
+        "Developed Spring Boot microservices and integrated them with the e-commerce platform to support business processes and communication between services.",
+        "Implemented and maintained payment gateway integrations to support secure and reliable payment processing across e-commerce transaction workflows.",
+        "Developed event-driven integrations using Apache Kafka to support asynchronous communication and processing between backend services.",
+        "Worked with Apache Solr to support product search and retrieval capabilities within the e-commerce platform.",
+        "Contributed to customer engagement and marketing integrations using SAP Emarsys, supporting business-driven customer communication and engagement workflows.",
+        "Supported application scalability, performance, and reliability by developing and optimizing backend services designed to handle concurrent users and high-volume e-commerce transactions.",
+        "Collaborated across backend components and integrated services to troubleshoot production issues, improve system stability, and maintain reliable end-to-end transaction flows."
+      ]
+    }
+  ],
   "PLN ICON PLUS": [
     {
-      name: "CRM REPORT ULTIMATE",
+      name: "Aplikasi Pelayanan Pelanggan Terpusat (AP2T)",
       description: "CRM Report Ultimate is one of the reporting services within AP2T (Aplikasi Pelayanan Pelanggan Terpusat), a centralized enterprise platform used by PT PLN (Persero) to handle end-to-end customer and billing operations across Indonesia. The service is designed to support large-scale report generation and distribution, enabling operational and analytical insights for high-volume processes such as billing, meter data processing, and customer lifecycle management",
       image: "/img/projects/ap2t.png",
       imageTitle: "PLN Customer Service Reporting",
       imageSubtitle: "Automated report generation & distribution",
-      technologies: ["Java", "Quarkus", "PostgreSQL", "Oracle DB", "Redis", "Apache Kafka", "PL SQL", "Microservices", "Apache Nexus Repository", "Jesper Reports", "Crystal Reports", "Docker"],
+      technologies: ["Java", "Quarkus", "Spring Boot" ,"PostgreSQL", "Oracle DB", "Redis", "Apache Kafka", "PL SQL", "Microservices", "Apache Nexus Repository", "Jesper Reports", "Crystal Reports", "Docker", "GItLab", "SonarCloud"],
       role: "Backend Developer",
       achievements: [
         "Led the migration from a Java Spring Boot and Oracle PL/SQL–centric architecture to a Java Quarkus–based backend with PostgreSQL, consolidating business logic into the application layer.",
@@ -251,12 +288,12 @@ const projectsData = {
       ],
     },
     {
-      name: "CRM REPORT TRANSACTION",
+      name: "PLN Mobile",
       description: "CRM Report Transaction is a backend service within the PLN Mobile ecosystem, designed to manage and process customer transaction data. It serves as a core component for handling transaction-related reporting, enabling data integration across multiple internal systems, and providing reliable data for other services within PLN Mobile.",
       image: "/img/projects/pln-mobile.png",
       imageTitle: "PLN Transaction Analytics",
       imageSubtitle: "Data integration & customer management hub",
-      technologies: ["Java", "Quarkus", "PostgreSQL", "Oracle DB", "Redis", "Apache Kafka", "GRPC" ,"PL SQL", "Microservices", "Apache Nexus Repository", "GRPC", "Docker"],
+      technologies: ["Java", "Quarkus", "PostgreSQL", "Oracle DB", "Redis", "Apache Kafka", "GRPC" ,"PL SQL", "Microservices", "Apache Nexus Repository", "GRPC", "Docker", "GItLab", "SonarCloud"],
       role: "Backend Developer",
       achievements: [
         "Migrated transaction processing logic from Oracle PL/SQL and Java Spring Boot into a Java Quarkus backend with PostgreSQL, centralizing business logic within the service layer.",
@@ -274,7 +311,7 @@ const projectsData = {
       image: "/img/projects/hcms.png",
       imageTitle: "FIFGROUP HCMS",
       imageSubtitle: "Enterprise Human Resource & Operations",
-      technologies: ["Java", "Spring Boot", "Oracle DB", "Redis", "Kafka", "Microservices", "Java Mail Sender", "Scheduler", "Apache POI", "Docker", "Gitlab", "JUnit"],
+      technologies: ["Java", "Spring Boot", "Spring Security", "JWT", "Oracle DB", "Flyway Migration","Redis", "Apache Kafka" ,"Microservices", "Spring Mail", "Spring Scheduler", "Apache POI", "Docker", "Gitlab", "JUnit"],
       role: "Backend Developer",
       achievements: [
         "Engineered an automated email scheduling system to handle high-volume internal notifications and payroll alerts with guaranteed delivery.",
@@ -309,7 +346,7 @@ const projectsData = {
       image: "/img/projects/indesso.png",
       imageTitle: "Indesso Formula Management",
       imageSubtitle: "R&D Formula & Compliance System",
-      technologies: ["Java", "Spring Boot", "SQL server", "LDAP", "Redis", "Caffeine", "Scheduler", "kafka", "Apache POI", "Apache Nifi", "Apache Nexus Repository", "kafka"],
+      technologies: ["Java", "Spring Boot", "Spring Data JPA" , "Flyway Migration","SQL server", "LDAP", "Redis", "Caffeine", "Spring Scheduler", "Apache kafka", "Apache POI", "Apache Nifi", "Apache Nexus Repository",],
       role: "Backend Developer & Technical Lead",
       achievements: [
         "Migrated and developed the application using Java Spring Boot with a microservices architecture.",
@@ -328,7 +365,7 @@ const projectsData = {
       description: "PickMe is a Talent Sourcing and Recruitment platform developed by PT Mitra Integrasi Informatika (MII) to connect IT talent providers with companies in need of skilled professionals. The application is designed to modernize the recruitment process through the management of a curated talent database based on expertise, in-depth candidate profile exploration including portfolios and certifications, and integrated interview scheduling features.",
       image: "/img/projects/pickme.png",
       imageTitle: "PICKME CLIENT MAPPING",
-      technologies: ["Java", "Spring Boot", "mySQL", "Caffeine", "Java Mail Sender", "Thymeleaf", "Tailwind CSS"],
+      technologies: ["Java", "Spring Boot", "Spring Data JPA" ,"Spring Security" ,"MySQL", "Caffeine", "Spring Mail", "Thymeleaf", "HTML", "CSS", "Javascript","Tailwind CSS"],
       role: "Fullstack Developer",
       achievements: [
         "Successfully migrated legacy features from external applications into the PickMe ecosystem.",
@@ -342,7 +379,7 @@ const projectsData = {
       description: "Metrodata Academy is a Learning Management System (LMS) and digital talent development platform managed by PT Mitra Integrasi Informatika (MII), serving as the central hub for IT education within the Metrodata Group. It is designed to train, certify, and prepare IT talent for industry needs through structured learning programs. The platform provides a wide range of IT courses, participant management for programs such as internships and bootcamps, automated digital certification upon completion, and integration with recruitment platforms like PickMe to streamline talent distribution into the workforce.",
       image: "/img/projects/metrodata-academy.png",
       imageTitle: "Metrodata Academy",
-      technologies: ["Java", "Spring Boot", "mySQL", "Redis", "Apache Kafka", "Java Scheduler", "Java Mail Sender", "Microservices", "Spring Boot Scheduler", "Midtrans"],
+      technologies: ["Java", "Spring Boot", "Spring Data JPA" , "Spring Security" , "OAuth2", "JWT","MySQL", "Redis", "Apache Kafka", "Microservices", "Spring Mail" ,"Spring Boot Scheduler", "Midtrans"],
       role: "Backend Developer",
       achievements: [
         "Led the development of complex backend services requiring high scalability and rigorous security standards.",
@@ -356,7 +393,7 @@ const projectsData = {
       description: "Inventory Management System is an internal enterprise application used within PT Mitra Integrasi Informatika (MII) to systematically track and manage company assets and inventory. As a leading system integrator, MII utilizes this system to monitor the movement of hardware such as servers, laptops, and network devices as well as software licenses used internally or delivered to clients. The system includes features such as end to end asset tracking from warehouse intake to allocation and delivery, automated stock monitoring with low level alerts, detailed audit trails for tracking changes and asset movements, and reporting dashboards that provide insights into asset value, depreciation, and periodic stock mutations.",
       image: "/img/projects/ims.png",
       imageTitle: "IMS",
-      technologies: ["Java", "Spring Boot", "mySQL", "Caffeine", "Java Mail Sender", "Crystal Reports", "Fast Excel", "Spring Boot Scheduler"],
+      technologies: ["Java", "Spring Boot", "Spring Data JPA", "Spring Security" ,"Spring Security"  ,"MySQL", "Caffeine", "Spring Mail", "Crystal Reports", "Fast Excel", "Spring Boot Scheduler", "HTML", "CSS", "Javascript", "Tailwind CSS"],
       role: "Fullstack Developer",
       achievements: [
         "Developed a comprehensive tracking system for asset lifecycle management, from procurement to borrowing status.",
@@ -373,7 +410,7 @@ const projectsData = {
       image: "/img/projects/sirumi.png",
       imageTitle: "House Of Worship Management System",
       imageSubtitle: "City-wide facility management",
-      technologies: ["PHP", "Laravel", "mySQL", "Tailwind CSS", "Chart.js"],
+      technologies: ["PHP", "Laravel", "MySQL", "Tailwind CSS", "Chart.js"],
       role: "Fullstack Developer",
       achievements: [
         "Developed a streamlined registration workflow for religious organizations to register their facilities legally.",
@@ -390,14 +427,16 @@ const projectsData = {
       image: "/img/projects/glorindo-group.png",
       imageTitle: "Book Catalog & E-Reader",
       imageSubtitle: "Digital Library & E-commerce",
-      technologies: ["Javascript", "Express.js", "Vue.js", "mySQL", "Redis"],
+      technologies: ["Javascript", "Typescript",  "Express.js", "Vue.js", "OAuth 2.0", "JWT", "MySQL", "Redis", "AWS S3"],
       role: "Fullstack Developer",
       achievements: [
-        "Architected an end-to-end book management system featuring an online reader and shopping cart functionality.",
-        "Optimized book loading and browsing performance using Redis caching for high-speed content delivery.",
-        "Developed a responsive and interactive frontend with Vue.js to provide a seamless reading experience.",
-        "Integrated a secure transaction system for users to purchase physical or digital copies of books.",
-      ],
+        "Architected and developed an end-to-end digital library and e-commerce platform featuring online reading, book management, and shopping cart functionality.",
+        "Implemented OAuth 2.0 authentication for customers and Basic Authentication for administrative access control.",
+        "Optimized catalog browsing and book content delivery using Redis caching, reducing response times and improving user experience.",
+        "Developed a responsive Vue.js frontend with an interactive reading interface and seamless navigation across devices.",
+        "Integrated AWS S3 for scalable storage and delivery of book covers, digital assets, and reading materials.",
+        "Built secure transaction workflows for purchasing both physical and digital books."
+      ]
     },
   ],
   "Eka Berkat Jaya": [
@@ -407,14 +446,26 @@ const projectsData = {
       image: "/img/projects/projenta.png",
       imageTitle: "Construction Project Management",
       imageSubtitle: "Jira-style construction management",
-      technologies: ["Java", "Spring Boot", "PostgreSQL", "Thymeleaf"],
+      technologies: [
+        "Java",
+        "Spring Boot",
+        "PostgreSQL",
+        "Thymeleaf",
+        "Flyway",
+        "Spring Security",
+        "Tailwind CSS",
+        "MinIO"
+      ],
       role: "Fullstack Developer",
       achievements: [
-        "Designed and developed a task-tracking system to manage complex construction milestones and project timelines.",
-        "Implemented a progress monitoring dashboard to help project managers track resource allocation and deadlines.",
-        "Built a robust backend using Spring Boot and PostgreSQL to handle multi-layered project data and hierarchies.",
-        "Developed automated notification and reporting features to keep stakeholders updated on construction status.",
-      ],
+        "Designed and developed a Jira-inspired task tracking system to manage complex construction milestones, workflows, and project timelines.",
+        "Implemented role-based access control and secured application endpoints using Spring Security with Basic Authentication.",
+        "Built a robust backend using Spring Boot and PostgreSQL to manage multi-layered project data, task hierarchies, and resource allocation.",
+        "Managed database versioning and schema evolution using Flyway migrations, ensuring consistent deployments across environments.",
+        "Integrated MinIO object storage for efficient management of project documents, images, and file attachments while keeping database storage lightweight.",
+        "Developed an interactive project monitoring dashboard with Thymeleaf and Tailwind CSS to provide real-time visibility into project progress and deadlines.",
+        "Implemented automated notifications and reporting features to keep stakeholders informed of construction progress and project status."
+      ]
     },
   ],
   PersonalPal: [
@@ -424,7 +475,7 @@ const projectsData = {
       image: "/img/projects/personal-pal.png",
       imageTitle: "Personal Daily Management App",
       imageSubtitle: "Finance, Health, and Lifestyle Tracking",
-      technologies: ["JavaScript", "Node.js", "Express.js", "mySQL", "Redis", "Kafka", "Microservices", "JWT"],
+      technologies: ["JavaScript", "Node.js", "Express.js", "MySQL", "Redis", "Kafka", "Microservices", "JWT"],
       role: "Backend Developer",
       achievements: [
         "Built backend services for daily financial tracking, including income, expenses, savings, and debt records.",

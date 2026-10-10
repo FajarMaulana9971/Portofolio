@@ -24,6 +24,33 @@
         <div class="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-emerald-500/0 via-emerald-500/50 to-emerald-500/0 hidden md:block"></div>
 
         <div class="space-y-8 md:space-y-16">
+          
+          <!-- PT NAWA DATA -->
+          <div class="relative flex flex-col md:flex-row items-center">
+            <div class="hidden md:block md:w-1/2 md:pr-16"></div>
+            <!-- Desktop dot only -->
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-emerald-400 rounded-full border-4 border-gray-900 shadow-lg shadow-emerald-400/50 z-10 hidden md:flex items-center justify-center">
+              <div class="w-2 h-2 bg-gray-900 rounded-full"></div>
+            </div>
+            <div class="w-full md:w-1/2 md:pl-16">
+              <div class="bg-gray-800/50 backdrop-blur-sm border border-emerald-500/30 rounded-2xl p-5 md:p-6 hover:border-emerald-400 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/20 w-full md:max-w-lg">
+                <div class="flex flex-col items-center text-center mb-4">
+                  <div class="w-16 h-16 bg-gray-700 rounded-lg flex items-center justify-center mb-3">
+                    <img src="/img/projects/nawa-data.png" alt="Logo MII" class="w-full h-full object-contain p-2 rounded-lg" />
+                  </div>
+                  <h3 class="text-xl md:text-2xl font-bold text-white mb-2">PT Nawa Data Solution</h3>
+                  <p class="text-emerald-400 font-semibold mb-1 text-sm md:text-base">JAVA & SAP Developer</p>
+                  <p class="text-gray-400 text-sm">Jun 2026 - Present</p>
+                </div>
+                <div class="mt-4 md:mt-6">
+                  <p class="text-gray-300 text-sm mb-4 text-center">Key Client Project</p>
+                  <div class="flex flex-wrap justify-center gap-2">
+                    <button @click="openModal('ASTRA INTERNATIONAL')" class="group bg-gray-700/50 hover:bg-gray-600/50 text-white px-3 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border border-gray-600 hover:border-emerald-400 text-sm">PT Astra International</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <!-- PT MUST -->
           <div class="relative flex flex-col md:flex-row items-center">
@@ -35,10 +62,10 @@
                   </div>
                   <h3 class="text-xl md:text-2xl font-bold text-white mb-2">PT Mitra Utama Solusi Telematika</h3>
                   <p class="text-emerald-400 font-semibold mb-1 text-sm md:text-base">SENIOR SOFTWARE ENGINER</p>
-                  <p class="text-gray-400 text-sm">Oct 2025 - Apr 2026</p>
+                  <p class="text-gray-400 text-sm">Oct 2025 - May 2026</p>
                 </div>
                 <div class="mt-4 md:mt-6">
-                  <p class="text-gray-300 text-sm mb-4 text-center">Key Client Projects</p>
+                  <p class="text-gray-300 text-sm mb-4 text-center">Key Client Project</p>
                   <div class="flex flex-wrap justify-center gap-2">
                     <button @click="openModal('PLN ICON PLUS')" class="relative group bg-gray-700/50 hover:bg-gray-600/50 text-white px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border border-gray-600 hover:border-emerald-400 text-sm">
                       PT Indonesia Comnets Plus
@@ -135,7 +162,7 @@
                 </div>
                 <div class="mt-4 md:mt-6">
                   <div class="flex flex-wrap justify-center gap-2">
-                    <button @click="openModal('PersonalPal')" class="group bg-gray-700/50 hover:bg-gray-600/50 text-white px-3 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border border-gray-600 hover:border-emerald-400 text-sm">Personal Pal</button>
+                    <!-- <button @click="openModal('PersonalPal')" class="group bg-gray-700/50 hover:bg-gray-600/50 text-white px-3 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border border-gray-600 hover:border-emerald-400 text-sm">Personal Pal</button> -->
                     <button @click="openModal('Spendly')" class="group bg-gray-700/50 hover:bg-gray-600/50 text-white px-3 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border border-gray-600 hover:border-emerald-400 text-sm">Spendly</button>
                     <button @click="openModal('SpringIntializr')" class="group bg-gray-700/50 hover:bg-gray-600/50 text-white px-3 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border border-gray-600 hover:border-emerald-400 text-sm">Serverapp Initialzr</button>
                   </div>
