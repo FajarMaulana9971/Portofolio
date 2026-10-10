@@ -89,6 +89,8 @@
                 <img
                   :src="tech.icon"
                   :alt="tech.name"
+                  loading="lazy"
+                  decoding="async"
                   class="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
                 />
               </div>

@@ -36,7 +36,7 @@
               <div class="bg-gray-800/50 backdrop-blur-sm border border-emerald-500/30 rounded-2xl p-5 md:p-6 hover:border-emerald-400 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/20 w-full md:max-w-lg">
                 <div class="flex flex-col items-center text-center mb-4">
                   <div class="w-16 h-16 bg-gray-700 rounded-lg flex items-center justify-center mb-3">
-                    <img src="/img/projects/nawa-data.png" alt="Logo MII" class="w-full h-full object-contain p-2 rounded-lg" />
+                    <img src="/img/projects/nawa-data.png" alt="Logo MII" loading="lazy" decoding="async" class="w-full h-full object-contain p-2 rounded-lg" />
                   </div>
                   <h3 class="text-xl md:text-2xl font-bold text-white mb-2">PT Nawa Data Solution</h3>
                   <p class="text-emerald-400 font-semibold mb-1 text-sm md:text-base">JAVA & SAP Developer</p>
@@ -58,7 +58,7 @@
               <div class="bg-gray-800/50 backdrop-blur-sm border border-emerald-500/30 rounded-2xl p-5 md:p-6 hover:border-emerald-400 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/20 w-full md:max-w-lg">
                 <div class="flex flex-col items-center text-center mb-4">
                   <div class="w-16 h-16 bg-gray-700 rounded-lg flex items-center justify-center mb-3">
-                    <img src="/img/projects/must.jpg" alt="Logo PT MUST" class="w-full h-full object-contain p-2 rounded-lg" />
+                    <img src="/img/projects/must.jpg" alt="Logo PT MUST" loading="lazy" decoding="async" class="w-full h-full object-contain p-2 rounded-lg" />
                   </div>
                   <h3 class="text-xl md:text-2xl font-bold text-white mb-2">PT Mitra Utama Solusi Telematika</h3>
                   <p class="text-emerald-400 font-semibold mb-1 text-sm md:text-base">SENIOR SOFTWARE ENGINER</p>
@@ -93,7 +93,7 @@
               <div class="bg-gray-800/50 backdrop-blur-sm border border-emerald-500/30 rounded-2xl p-5 md:p-6 hover:border-emerald-400 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/20 w-full md:max-w-lg">
                 <div class="flex flex-col items-center text-center mb-4">
                   <div class="w-16 h-16 bg-gray-700 rounded-lg flex items-center justify-center mb-3">
-                    <img src="/img/projects/mii.png" alt="Logo MII" class="w-full h-full object-contain p-2 rounded-lg" />
+                    <img src="/img/projects/mii.png" alt="Logo MII" loading="lazy" decoding="async" class="w-full h-full object-contain p-2 rounded-lg" />
                   </div>
                   <h3 class="text-xl md:text-2xl font-bold text-white mb-2">PT Mitra Integrasi Informatika</h3>
                   <p class="text-emerald-400 font-semibold mb-1 text-sm md:text-base">JAVA DEVELOPER</p>
@@ -121,7 +121,7 @@
               <div class="bg-gray-800/50 backdrop-blur-sm border border-emerald-500/30 rounded-2xl p-5 md:p-6 hover:border-emerald-400 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/20 w-full md:max-w-lg">
                 <div class="flex flex-col items-center text-center mb-4">
                   <div class="w-16 h-16 bg-gray-700 rounded-lg flex items-center justify-center mb-3">
-                    <img src="/img/projects/ardhacodes.png" alt="Logo Ardhacodes" class="w-full h-full object-contain p-2 rounded-lg" />
+                    <img src="/img/projects/ardhacodes.png" alt="Logo Ardhacodes" loading="lazy" decoding="async" class="w-full h-full object-contain p-2 rounded-lg" />
                   </div>
                   <h3 class="text-xl md:text-2xl font-bold text-white mb-2">Ardhacodes Teknologi Indonesia</h3>
                   <p class="text-emerald-400 font-semibold mb-1 text-sm md:text-base">FULLSTACK DEVELOPER</p>
@@ -175,15 +175,50 @@
       </div>
     </div>
 
-    <ExperienceAndProjectModal :project="selectedProject" @close="closeModal" />
+    <ExperienceAndProjectModal
+      :project="selectedProject"
+      :initial-scroll-position="clickedScrollPos"
+      @close="closeModal"
+    />
   </section>
 </template>
 
 <script setup>
-import { ref } from "vue";
-import ExperienceAndProjectModal from "../modal/ExperienceAndProjectModal.vue";
+import { ref, defineAsyncComponent } from "vue";
+
+const ExperienceAndProjectModal = defineAsyncComponent(() =>
+  import("../modal/ExperienceAndProjectModal.vue")
+);
 
 const selectedProject = ref(null);
-const openModal = (project) => { selectedProject.value = project; };
-const closeModal = () => { selectedProject.value = null; };
+const clickedScrollPos = ref(0);
+
+const openModal = (project) => {
+  const lenis = window.lenis;
+  const currentScroll =
+    lenis && typeof lenis.scroll === "number"
+      ? lenis.scroll
+      : window.scrollY ||
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        0;
+
+  clickedScrollPos.value = Math.round(currentScroll);
+  selectedProject.value = project;
+};
+
+const closeModal = () => {
+  const targetScroll = clickedScrollPos.value;
+  selectedProject.value = null;
+
+  requestAnimationFrame(() => {
+    const lenis = window.lenis;
+    if (lenis) {
+      lenis.scrollTo(targetScroll, { immediate: true, force: true });
+    } else {
+      window.scrollTo({ top: targetScroll, behavior: "instant" });
+      window.scrollTo(0, targetScroll);
+    }
+  });
+};
 </script>

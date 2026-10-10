@@ -121,6 +121,15 @@ const handleTouchEnd = () => {
   isDragging.value = false;
 };
 
+let rafId = null;
+const throttledScrollHandler = () => {
+  if (rafId) return;
+  rafId = requestAnimationFrame(() => {
+    updateScrollProgress();
+    rafId = null;
+  });
+};
+
 // Watch scroll container changes
 watch(
   () => props.scrollContainer,
@@ -132,7 +141,7 @@ watch(
       window.removeEventListener("scroll", scrollListener);
     }
 
-    scrollListener = updateScrollProgress;
+    scrollListener = throttledScrollHandler;
 
     if (newContainer) {
       newContainer.addEventListener("scroll", scrollListener, { passive: true });
@@ -152,6 +161,11 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
+  if (rafId) {
+    cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+
   const container = props.scrollContainer;
 
   if (container && scrollListener) {

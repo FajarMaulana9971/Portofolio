@@ -75,6 +75,7 @@
                     <img
                       :src="currentProjectData.image"
                       :alt="currentProjectData.name"
+                      decoding="async"
                       class="w-full h-full object-cover"
                       @error="handleImageError"
                       @load="handleImageLoad"
@@ -149,6 +150,10 @@ import Lenis from "@studio-freight/lenis";
 
 const props = defineProps({
   project: String,
+  initialScrollPosition: {
+    type: Number,
+    default: null,
+  },
 });
 
 const emit = defineEmits(["close"]);
@@ -167,24 +172,38 @@ const getMainLenis = () => {
 };
 
 let scrollPosition = 0;
-let originalBodyStyles = { overflow: "", position: "", top: "", width: "" };
+let originalOverflow = "";
+let isModalOpen = false;
 
 const isMobile = () => window.innerWidth < 768;
 
 const setupModal = async () => {
+  if (isModalOpen) return;
+  isModalOpen = true;
+
   const lenis = getMainLenis();
-  scrollPosition = window.scrollY;
-  originalBodyStyles = {
-    overflow: document.body.style.overflow,
-    position: document.body.style.position,
-    top: document.body.style.top,
-    width: document.body.style.width,
-  };
-  document.body.style.position = "fixed";
-  document.body.style.top = `-${scrollPosition}px`;
-  document.body.style.width = "100%";
+  if (
+    typeof props.initialScrollPosition === "number" &&
+    props.initialScrollPosition > 0
+  ) {
+    scrollPosition = props.initialScrollPosition;
+  } else if (lenis && typeof lenis.scroll === "number" && lenis.scroll > 0) {
+    scrollPosition = Math.round(lenis.scroll);
+  } else {
+    scrollPosition = Math.round(
+      window.scrollY ||
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        0
+    );
+  }
+
+  originalOverflow = document.body.style.overflow;
   document.body.style.overflow = "hidden";
-  if (lenis) lenis.stop();
+
+  if (lenis) {
+    lenis.stop();
+  }
 
   await nextTick();
   await nextTick();
@@ -215,15 +234,28 @@ const setupModal = async () => {
 };
 
 const cleanupModal = () => {
+  if (!isModalOpen) return;
+  isModalOpen = false;
+
   const lenis = getMainLenis();
-  if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
-  if (modalLenis) { modalLenis.destroy(); modalLenis = null; }
-  document.body.style.overflow = originalBodyStyles.overflow;
-  document.body.style.position = originalBodyStyles.position;
-  document.body.style.top = originalBodyStyles.top;
-  document.body.style.width = originalBodyStyles.width;
-  window.scrollTo(0, scrollPosition);
-  if (lenis) lenis.start();
+  if (rafId) {
+    cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+  if (modalLenis) {
+    modalLenis.destroy();
+    modalLenis = null;
+  }
+
+  document.body.style.overflow = originalOverflow || "";
+
+  if (lenis) {
+    lenis.start();
+    lenis.scrollTo(scrollPosition, { immediate: true, force: true });
+  } else {
+    window.scrollTo({ top: scrollPosition, behavior: "instant" });
+    window.scrollTo(0, scrollPosition);
+  }
 };
 
 const handleImageLoad = () => { imageLoading.value = false; };
@@ -588,17 +620,20 @@ const handleKeydown = (e) => {
 
 import Aos from "aos";
 
-watch(() => props.project, async (newVal) => {
-  if (newVal) {
-    await setupModal();
-    await nextTick();
-    Aos.refreshHard();
-    window.addEventListener("keydown", handleKeydown);
-  } else {
-    cleanupModal();
-    window.removeEventListener("keydown", handleKeydown);
+watch(
+  () => props.project,
+  async (newVal, oldVal) => {
+    if (newVal) {
+      await setupModal();
+      await nextTick();
+      Aos.refreshHard();
+      window.addEventListener("keydown", handleKeydown);
+    } else if (oldVal) {
+      cleanupModal();
+      window.removeEventListener("keydown", handleKeydown);
+    }
   }
-});
+);
 
 onUnmounted(() => {
   cleanupModal();

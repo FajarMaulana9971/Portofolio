@@ -29,7 +29,6 @@ function initLenis() {
     if (lenis) {
       lenis.destroy();
       lenis = null;
-      console.log("Lenis Disabled (Mobile)");
     }
   } else {
     if (!lenis) {
@@ -47,7 +46,6 @@ function initLenis() {
         }
       }
       requestAnimationFrame(raf);
-      console.log("Lenis Enabled (Desktop)");
     }
   }
   
@@ -56,8 +54,14 @@ function initLenis() {
 
 initLenis();
 
-window.addEventListener("resize", () => {
-  initLenis();
-});
+let resizeTimer = null;
+window.addEventListener(
+  "resize",
+  () => {
+    if (resizeTimer) clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(initLenis, 150);
+  },
+  { passive: true }
+);
 
 export { lenis };

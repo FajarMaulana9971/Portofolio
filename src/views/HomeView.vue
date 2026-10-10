@@ -1,16 +1,42 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, defineAsyncComponent } from "vue";
 
 import WelcomeSection from "../components/section/WelcomeSection.vue";
-import AboutSection from "../components/section/AboutSection.vue";
-import ExperienceAndProjectSection from "../components/section/ExperienceAndProjectSection.vue";
-import FooterSection from "../components/section/FooterSection.vue";
-import Navbar from "../components/navbar/Navbar.vue";
-import VerticalSlider from "../components/slider/VerticalSlider.vue";
+
+const AboutSection = defineAsyncComponent(() =>
+  import("../components/section/AboutSection.vue")
+);
+const ExperienceAndProjectSection = defineAsyncComponent(() =>
+  import("../components/section/ExperienceAndProjectSection.vue")
+);
+const FooterSection = defineAsyncComponent(() =>
+  import("../components/section/FooterSection.vue")
+);
+const Navbar = defineAsyncComponent(() =>
+  import("../components/navbar/Navbar.vue")
+);
+const VerticalSlider = defineAsyncComponent(() =>
+  import("../components/slider/VerticalSlider.vue")
+);
 
 const showWelcome = ref(true);
 
 onMounted(() => {
+  // Preload main content chunks during the 6s welcome animation idle period
+  const preloadMainContent = () => {
+    import("../components/section/AboutSection.vue");
+    import("../components/section/ExperienceAndProjectSection.vue");
+    import("../components/section/FooterSection.vue");
+    import("../components/navbar/Navbar.vue");
+    import("../components/slider/VerticalSlider.vue");
+  };
+
+  if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+    window.requestIdleCallback(preloadMainContent);
+  } else {
+    setTimeout(preloadMainContent, 1000);
+  }
+
   setTimeout(() => {
     showWelcome.value = false;
     document.body.style.overflow = "auto";
