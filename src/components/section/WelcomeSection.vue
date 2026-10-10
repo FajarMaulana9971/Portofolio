@@ -85,16 +85,16 @@
         </div>
 
         <div
-          class="absolute left-48 md:left-72 top-48 md:top-52 text-left"
+          class="role-container absolute md:left-72 md:top-52 text-left"
           data-aos="fade-left"
           data-aos-duration="800"
           data-aos-delay="2500"
         >
-          <div class="text-lg md:text-xl lg:text-2xl font-light">
+          <div class="hidden md:block text-lg md:text-xl lg:text-2xl font-light">
             <p class="typing-text inline-block"></p>
           </div>
           <div
-            class="text-lg md:text-xl lg:text-2xl font-light mt-2 typing-text"
+            class="text-xs sm:text-base md:text-xl lg:text-2xl font-light mt-0 md:mt-2 typing-text"
           >
             <p
               class="text-emerald-400"
@@ -205,11 +205,19 @@ export default {
     transform: scale(0.8);
     transform-origin: top left;
   }
+  .role-container {
+    left: 205px;
+    top: 152px;
+  }
 }
 
 @media (max-width: 480px) {
   .arrow-line {
     transform: scale(0.6);
+  }
+  .role-container {
+    left: 155px;
+    top: 134px;
   }
 }
 </style>

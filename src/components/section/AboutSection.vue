@@ -1,9 +1,9 @@
 <!-- AboutSection -->
 <template>
   <div
-    class="min-h-screen bg-gradient-to-br from-gray-900 via-gray-900 to-gray-900 text-gray-100 p-8"
+    class="relative overflow-hidden min-h-screen bg-gradient-to-br from-gray-900 via-gray-900 to-gray-900 text-gray-100 p-4 sm:p-8"
   >
-    <div class="absolute inset-0 opacity-20 pointer-events-none">
+    <div class="absolute inset-0 opacity-20 pointer-events-none overflow-hidden">
       <div
         class="absolute right-10 w-96 h-96 bg-emerald-600 rounded-full blur-3xl"
       ></div>
