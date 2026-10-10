@@ -4,15 +4,15 @@
     <Transition name="modal">
       <div
         v-if="project"
-        class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 modal-overlay"
+        class="fixed inset-0 bg-slate-950/85 backdrop-blur-md flex items-center justify-center z-50 p-4 modal-overlay"
         @click.self="$emit('close')"
       >
         <button
           v-if="projectsList.length > 1"
           @click="previousProject"
-          class="absolute left-3 md:left-8 top-1/2 -translate-y-1/2 z-30 w-8 h-8 md:w-16 md:h-16 rounded-full bg-gray-900/70 backdrop-blur-lg border border-emerald-400/40 flex items-center justify-center transition-all duration-300 ease-out hover:bg-emerald-500/10 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-500/30 active:scale-95"
+          class="absolute left-3 md:left-8 top-1/2 -translate-y-1/2 z-30 w-8 h-8 md:w-16 md:h-16 rounded-full bg-slate-900/80 backdrop-blur-lg border border-teal-400/50 flex items-center justify-center transition-all duration-300 ease-out hover:bg-cyan-500/20 hover:border-cyan-300 hover:shadow-[0_0_25px_rgba(56,189,248,0.5)] active:scale-95"
         >
-          <svg class="w-4 h-4 md:w-8 md:h-8 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 md:w-8 md:h-8 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
@@ -20,9 +20,9 @@
         <button
           v-if="projectsList.length > 1"
           @click="nextProject"
-          class="absolute right-3 md:right-8 top-1/2 -translate-y-1/2 z-30 w-8 h-8 md:w-16 md:h-16 rounded-full bg-gray-900/70 backdrop-blur-lg border border-emerald-400/40 flex items-center justify-center transition-all duration-300 ease-out hover:bg-emerald-500/10 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-500/30 active:scale-95"
+          class="absolute right-3 md:right-8 top-1/2 -translate-y-1/2 z-30 w-8 h-8 md:w-16 md:h-16 rounded-full bg-slate-900/80 backdrop-blur-lg border border-teal-400/50 flex items-center justify-center transition-all duration-300 ease-out hover:bg-cyan-500/20 hover:border-cyan-300 hover:shadow-[0_0_25px_rgba(56,189,248,0.5)] active:scale-95"
         >
-          <svg class="w-4 h-4 md:w-8 md:h-8 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 md:w-8 md:h-8 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
           </svg>
         </button>
@@ -33,27 +33,27 @@
         </div>
 
         <div
-          class="bg-linear-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden border border-emerald-500/30 shadow-[0_0_60px_-10px_rgba(16,185,129,0.25)] relative"
+          class="bg-gradient-to-br from-[#0a182f] via-[#091e36] to-[#071322] rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden border border-teal-500/40 shadow-[0_0_60px_rgba(45,212,191,0.25)] relative"
           @wheel.stop
           data-aos="fade-up"
         >
           <!-- Modal Header -->
-          <div class="bg-linear-to-r from-gray-900/90 to-gray-800/90 backdrop-blur-md p-4 md:p-6 border-b border-emerald-500/30">
+          <div class="bg-slate-900/90 backdrop-blur-md p-4 md:p-6 border-b border-teal-500/30">
             <div class="flex items-start justify-between gap-3">
               <div class="flex-1 min-w-0">
                 <h3 class="text-base md:text-2xl font-bold text-white leading-tight">
-                  <span class="text-gray-400 text-sm md:text-base font-normal block md:inline">Project Showcase: </span>
-                  <span class="text-emerald-400">{{ currentProjectData.name }}</span>
+                  <span class="text-slate-400 text-sm md:text-base font-normal block md:inline">Project Showcase: </span>
+                  <span class="bg-gradient-to-r from-cyan-300 via-teal-200 to-emerald-300 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(45,212,191,0.6)]">{{ currentProjectData.name }}</span>
                 </h3>
-                <p v-if="projectsList.length > 1" class="text-gray-400 text-xs md:text-sm mt-1">
+                <p v-if="projectsList.length > 1" class="text-cyan-200/70 text-xs md:text-sm mt-1">
                   {{ currentIndex + 1 }} / {{ projectsList.length }}
                 </p>
               </div>
               <button
                 @click="$emit('close')"
-                class="shrink-0 w-8 h-8 md:w-10 md:h-10 bg-gray-700 hover:bg-gray-600 rounded-lg flex items-center justify-center transition-colors"
+                class="shrink-0 w-8 h-8 md:w-10 md:h-10 bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-cyan-400 rounded-lg flex items-center justify-center transition-colors text-white"
               >
-                <span class="text-white text-xl md:text-2xl leading-none">×</span>
+                <span class="text-xl md:text-2xl leading-none">×</span>
               </button>
             </div>
           </div>
@@ -65,70 +65,71 @@
           >
             <Transition name="slide" mode="out-in" @after-enter="onSlideTransitionEnd">
               <div :key="currentIndex">
-                <p class="text-gray-300 mb-6 text-center text-sm md:text-base">
+                <p class="text-slate-200 mb-6 text-center text-sm md:text-base leading-relaxed">
                   {{ currentProjectData.description }}
                 </p>
 
                 <!-- Project Image -->
-                <div class="bg-gray-700/50 rounded-lg overflow-hidden border border-gray-600 mb-6">
-                  <div v-if="currentProjectData.image" class="relative bg-gradient-to-br from-gray-800 to-gray-900 h-64 md:h-110">
+                <div class="bg-slate-800/60 rounded-xl overflow-hidden border border-slate-700/80 mb-6 shadow-md">
+                  <div v-if="currentProjectData.image" class="relative bg-gradient-to-br from-slate-900 to-[#071322] h-64 md:h-110">
                     <img
                       :src="currentProjectData.image"
                       :alt="currentProjectData.name"
+                      decoding="async"
                       class="w-full h-full object-cover"
                       @error="handleImageError"
                       @load="handleImageLoad"
                     />
-                    <div v-if="imageLoading" class="absolute inset-0 flex items-center justify-center bg-gray-900/50">
+                    <div v-if="imageLoading" class="absolute inset-0 flex items-center justify-center bg-slate-950/60 backdrop-blur-xs">
                       <div class="text-center">
-                        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-400 mx-auto mb-2"></div>
-                        <p class="text-gray-400 text-sm">Loading image...</p>
+                        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400 mx-auto mb-2"></div>
+                        <p class="text-cyan-200 text-sm">Loading image...</p>
                       </div>
                     </div>
                   </div>
-                  <div v-else class="aspect-video flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
+                  <div v-else class="aspect-video flex items-center justify-center bg-gradient-to-br from-slate-900 to-[#071322]">
                     <div class="text-center">
-                      <p class="text-gray-400">{{ currentProjectData.imageTitle }}</p>
-                      <p class="text-gray-500 text-sm mt-2">{{ currentProjectData.imageSubtitle }}</p>
+                      <p class="text-slate-300 font-semibold">{{ currentProjectData.imageTitle }}</p>
+                      <p class="text-cyan-200/60 text-sm mt-2">{{ currentProjectData.imageSubtitle }}</p>
                     </div>
                   </div>
                 </div>
 
                 <!-- Project Details -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                  <div class="bg-gray-700/30 rounded-lg p-4 border border-gray-600">
-                    <h4 class="text-center text-emerald-400 font-semibold mb-3">Technologies</h4>
+                  <div class="bg-slate-800/40 rounded-xl p-4 border border-teal-500/25">
+                    <h4 class="text-center bg-gradient-to-r from-cyan-300 to-teal-300 bg-clip-text text-transparent font-semibold mb-3 drop-shadow-[0_0_10px_rgba(56,189,248,0.3)]">Technologies</h4>
                     <div class="flex justify-center flex-wrap gap-2">
                       <span
                         v-for="tech in currentProjectData.technologies"
                         :key="tech"
-                        class="bg-gray-800 text-emerald-300 px-3 py-1 rounded-full text-xs md:text-sm border border-emerald-500/30"
+                        class="bg-slate-800/90 text-cyan-200 px-3 py-1 rounded-full text-xs md:text-sm border border-teal-500/40 shadow-[0_0_8px_rgba(45,212,191,0.2)]"
                       >
                         {{ tech }}
                       </span>
                     </div>
                   </div>
-                  <div class="bg-gray-700/30 rounded-lg p-4 border border-gray-600 flex flex-col items-center justify-center min-h-[120px]">
-                    <h4 class="text-emerald-400 font-semibold mb-2 text-center">Role</h4>
-                      <div class="flex-1 flex items-center justify-center">
-                    <p class="text-center text-white font-semibold text-sm md:text-base tracking-wide px-2">{{ currentProjectData.role }}</p>
-                  </div>
+                  <div class="bg-slate-800/40 rounded-xl p-4 border border-teal-500/25 flex flex-col items-center justify-center min-h-[120px]">
+                    <h4 class="text-center bg-gradient-to-r from-cyan-300 to-teal-300 bg-clip-text text-transparent font-semibold mb-2 drop-shadow-[0_0_10px_rgba(56,189,248,0.3)]">Role</h4>
+                    <div class="flex-1 flex items-center justify-center">
+                      <p class="text-center text-white font-semibold text-sm md:text-base tracking-wide px-2">{{ currentProjectData.role }}</p>
+                    </div>
                   </div>
                 </div>
 
                 <!-- Key Achievements -->
                 <div
                   v-if="currentProjectData.achievements && currentProjectData.achievements.length > 0"
-                  class="bg-gray-700/30 rounded-lg p-4 border border-gray-600"
+                  class="bg-slate-800/40 rounded-xl p-4 border border-teal-500/25"
                 >
-                  <h4 class="text-emerald-400 font-semibold mb-3">Key Achievements</h4>
+                  <h4 class="bg-gradient-to-r from-cyan-300 to-teal-300 bg-clip-text text-transparent font-semibold mb-3 drop-shadow-[0_0_10px_rgba(56,189,248,0.3)]">Key Achievements</h4>
                   <ul class="space-y-2">
                     <li
                       v-for="achievement in currentProjectData.achievements"
                       :key="achievement"
-                      class="text-gray-300 text-sm flex items-start gap-2"
+                      class="text-slate-300 text-sm flex items-start gap-2"
                     >
-                      <span class="text-emerald-400 mt-1">✓</span>
+                      <span class="text-cyan-400 font-bold mt-1">✓</span>
                       <span>{{ achievement }}</span>
                     </li>
                   </ul>
@@ -149,6 +150,10 @@ import Lenis from "@studio-freight/lenis";
 
 const props = defineProps({
   project: String,
+  initialScrollPosition: {
+    type: Number,
+    default: null,
+  },
 });
 
 const emit = defineEmits(["close"]);
@@ -167,24 +172,38 @@ const getMainLenis = () => {
 };
 
 let scrollPosition = 0;
-let originalBodyStyles = { overflow: "", position: "", top: "", width: "" };
+let originalOverflow = "";
+let isModalOpen = false;
 
 const isMobile = () => window.innerWidth < 768;
 
 const setupModal = async () => {
+  if (isModalOpen) return;
+  isModalOpen = true;
+
   const lenis = getMainLenis();
-  scrollPosition = window.scrollY;
-  originalBodyStyles = {
-    overflow: document.body.style.overflow,
-    position: document.body.style.position,
-    top: document.body.style.top,
-    width: document.body.style.width,
-  };
-  document.body.style.position = "fixed";
-  document.body.style.top = `-${scrollPosition}px`;
-  document.body.style.width = "100%";
+  if (
+    typeof props.initialScrollPosition === "number" &&
+    props.initialScrollPosition > 0
+  ) {
+    scrollPosition = props.initialScrollPosition;
+  } else if (lenis && typeof lenis.scroll === "number" && lenis.scroll > 0) {
+    scrollPosition = Math.round(lenis.scroll);
+  } else {
+    scrollPosition = Math.round(
+      window.scrollY ||
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        0
+    );
+  }
+
+  originalOverflow = document.body.style.overflow;
   document.body.style.overflow = "hidden";
-  if (lenis) lenis.stop();
+
+  if (lenis) {
+    lenis.stop();
+  }
 
   await nextTick();
   await nextTick();
@@ -215,15 +234,28 @@ const setupModal = async () => {
 };
 
 const cleanupModal = () => {
+  if (!isModalOpen) return;
+  isModalOpen = false;
+
   const lenis = getMainLenis();
-  if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
-  if (modalLenis) { modalLenis.destroy(); modalLenis = null; }
-  document.body.style.overflow = originalBodyStyles.overflow;
-  document.body.style.position = originalBodyStyles.position;
-  document.body.style.top = originalBodyStyles.top;
-  document.body.style.width = originalBodyStyles.width;
-  window.scrollTo(0, scrollPosition);
-  if (lenis) lenis.start();
+  if (rafId) {
+    cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+  if (modalLenis) {
+    modalLenis.destroy();
+    modalLenis = null;
+  }
+
+  document.body.style.overflow = originalOverflow || "";
+
+  if (lenis) {
+    lenis.start();
+    lenis.scrollTo(scrollPosition, { immediate: true, force: true });
+  } else {
+    window.scrollTo({ top: scrollPosition, behavior: "instant" });
+    window.scrollTo(0, scrollPosition);
+  }
 };
 
 const handleImageLoad = () => { imageLoading.value = false; };
@@ -233,14 +265,51 @@ const handleImageError = (e) => {
 };
 
 const projectsData = {
+  "ASTRA INTERNATIONAL": [
+    {
+      name: "Digiroom by Auto2000",
+      description:
+        "Digiroom by Auto2000 is an automotive e-commerce platform that enables customers to purchase Toyota vehicles, spare parts, and accessories, as well as access various after-sales services. Developed within the Auto2000 digital ecosystem, the platform integrates commerce, payment processing, product search, customer engagement, and other business services to deliver a seamless end-to-end customer experience. My role focused on developing and maintaining backend services across SAP Commerce Cloud (Hybris) and Spring Boot microservices, integrating payment gateways and event-driven systems, implementing search capabilities, and supporting the reliability and scalability of a high-traffic e-commerce platform.",
+      image: "/img/projects/digiroom.png",
+      imageTitle: "Digiroom by Auto2000",
+      imageSubtitle: "Scalable automotive e-commerce & backend engineering",
+      technologies: [
+        "Java",
+        "Spring Boot",
+        "SAP Commerce Cloud (Hybris)",
+        "SAP Emarsys",
+        "Apache Kafka",
+        "Apache Solr",
+        "Redis",
+        "Microservices",
+        "Payment Gateway Integration",
+        "OCC API",
+        "Azure DevOps",
+        "SonarCloud",
+        "Docker",
+        "SQL"
+      ],
+      role: "Java & SAP Developer",
+      achievements: [
+        "Developed and maintained backend services in SAP Commerce Cloud (Hybris), implementing business logic and REST APIs to support core e-commerce functionalities and customer transactions.",
+        "Developed Spring Boot microservices and integrated them with the e-commerce platform to support business processes and communication between services.",
+        "Implemented and maintained payment gateway integrations to support secure and reliable payment processing across e-commerce transaction workflows.",
+        "Developed event-driven integrations using Apache Kafka to support asynchronous communication and processing between backend services.",
+        "Worked with Apache Solr to support product search and retrieval capabilities within the e-commerce platform.",
+        "Contributed to customer engagement and marketing integrations using SAP Emarsys, supporting business-driven customer communication and engagement workflows.",
+        "Supported application scalability, performance, and reliability by developing and optimizing backend services designed to handle concurrent users and high-volume e-commerce transactions.",
+        "Collaborated across backend components and integrated services to troubleshoot production issues, improve system stability, and maintain reliable end-to-end transaction flows."
+      ]
+    }
+  ],
   "PLN ICON PLUS": [
     {
-      name: "CRM REPORT ULTIMATE",
+      name: "Aplikasi Pelayanan Pelanggan Terpusat (AP2T)",
       description: "CRM Report Ultimate is one of the reporting services within AP2T (Aplikasi Pelayanan Pelanggan Terpusat), a centralized enterprise platform used by PT PLN (Persero) to handle end-to-end customer and billing operations across Indonesia. The service is designed to support large-scale report generation and distribution, enabling operational and analytical insights for high-volume processes such as billing, meter data processing, and customer lifecycle management",
       image: "/img/projects/ap2t.png",
       imageTitle: "PLN Customer Service Reporting",
       imageSubtitle: "Automated report generation & distribution",
-      technologies: ["Java", "Quarkus", "PostgreSQL", "Oracle DB", "Redis", "Apache Kafka", "PL SQL", "Microservices", "Apache Nexus Repository", "Jesper Reports", "Crystal Reports", "Docker"],
+      technologies: ["Java", "Quarkus", "Spring Boot" ,"PostgreSQL", "Oracle DB", "Redis", "Apache Kafka", "PL SQL", "Microservices", "Apache Nexus Repository", "Jesper Reports", "Crystal Reports", "Docker", "GItLab", "SonarCloud"],
       role: "Backend Developer",
       achievements: [
         "Led the migration from a Java Spring Boot and Oracle PL/SQL–centric architecture to a Java Quarkus–based backend with PostgreSQL, consolidating business logic into the application layer.",
@@ -251,12 +320,12 @@ const projectsData = {
       ],
     },
     {
-      name: "CRM REPORT TRANSACTION",
+      name: "PLN Mobile",
       description: "CRM Report Transaction is a backend service within the PLN Mobile ecosystem, designed to manage and process customer transaction data. It serves as a core component for handling transaction-related reporting, enabling data integration across multiple internal systems, and providing reliable data for other services within PLN Mobile.",
       image: "/img/projects/pln-mobile.png",
       imageTitle: "PLN Transaction Analytics",
       imageSubtitle: "Data integration & customer management hub",
-      technologies: ["Java", "Quarkus", "PostgreSQL", "Oracle DB", "Redis", "Apache Kafka", "GRPC" ,"PL SQL", "Microservices", "Apache Nexus Repository", "GRPC", "Docker"],
+      technologies: ["Java", "Quarkus", "PostgreSQL", "Oracle DB", "Redis", "Apache Kafka", "GRPC" ,"PL SQL", "Microservices", "Apache Nexus Repository", "GRPC", "Docker", "GItLab", "SonarCloud"],
       role: "Backend Developer",
       achievements: [
         "Migrated transaction processing logic from Oracle PL/SQL and Java Spring Boot into a Java Quarkus backend with PostgreSQL, centralizing business logic within the service layer.",
@@ -274,7 +343,7 @@ const projectsData = {
       image: "/img/projects/hcms.png",
       imageTitle: "FIFGROUP HCMS",
       imageSubtitle: "Enterprise Human Resource & Operations",
-      technologies: ["Java", "Spring Boot", "Oracle DB", "Redis", "Kafka", "Microservices", "Java Mail Sender", "Scheduler", "Apache POI", "Docker", "Gitlab", "JUnit"],
+      technologies: ["Java", "Spring Boot", "Spring Security", "JWT", "Oracle DB", "Flyway Migration","Redis", "Apache Kafka" ,"Microservices", "Spring Mail", "Spring Scheduler", "Apache POI", "Docker", "Gitlab", "JUnit"],
       role: "Backend Developer",
       achievements: [
         "Engineered an automated email scheduling system to handle high-volume internal notifications and payroll alerts with guaranteed delivery.",
@@ -309,7 +378,7 @@ const projectsData = {
       image: "/img/projects/indesso.png",
       imageTitle: "Indesso Formula Management",
       imageSubtitle: "R&D Formula & Compliance System",
-      technologies: ["Java", "Spring Boot", "SQL server", "LDAP", "Redis", "Caffeine", "Scheduler", "kafka", "Apache POI", "Apache Nifi", "Apache Nexus Repository", "kafka"],
+      technologies: ["Java", "Spring Boot", "Spring Data JPA" , "Flyway Migration","SQL server", "LDAP", "Redis", "Caffeine", "Spring Scheduler", "Apache kafka", "Apache POI", "Apache Nifi", "Apache Nexus Repository",],
       role: "Backend Developer & Technical Lead",
       achievements: [
         "Migrated and developed the application using Java Spring Boot with a microservices architecture.",
@@ -328,7 +397,7 @@ const projectsData = {
       description: "PickMe is a Talent Sourcing and Recruitment platform developed by PT Mitra Integrasi Informatika (MII) to connect IT talent providers with companies in need of skilled professionals. The application is designed to modernize the recruitment process through the management of a curated talent database based on expertise, in-depth candidate profile exploration including portfolios and certifications, and integrated interview scheduling features.",
       image: "/img/projects/pickme.png",
       imageTitle: "PICKME CLIENT MAPPING",
-      technologies: ["Java", "Spring Boot", "mySQL", "Caffeine", "Java Mail Sender", "Thymeleaf", "Tailwind CSS"],
+      technologies: ["Java", "Spring Boot", "Spring Data JPA" ,"Spring Security" ,"MySQL", "Caffeine", "Spring Mail", "Thymeleaf", "HTML", "CSS", "Javascript","Tailwind CSS"],
       role: "Fullstack Developer",
       achievements: [
         "Successfully migrated legacy features from external applications into the PickMe ecosystem.",
@@ -342,7 +411,7 @@ const projectsData = {
       description: "Metrodata Academy is a Learning Management System (LMS) and digital talent development platform managed by PT Mitra Integrasi Informatika (MII), serving as the central hub for IT education within the Metrodata Group. It is designed to train, certify, and prepare IT talent for industry needs through structured learning programs. The platform provides a wide range of IT courses, participant management for programs such as internships and bootcamps, automated digital certification upon completion, and integration with recruitment platforms like PickMe to streamline talent distribution into the workforce.",
       image: "/img/projects/metrodata-academy.png",
       imageTitle: "Metrodata Academy",
-      technologies: ["Java", "Spring Boot", "mySQL", "Redis", "Apache Kafka", "Java Scheduler", "Java Mail Sender", "Microservices", "Spring Boot Scheduler", "Midtrans"],
+      technologies: ["Java", "Spring Boot", "Spring Data JPA" , "Spring Security" , "OAuth2", "JWT","MySQL", "Redis", "Apache Kafka", "Microservices", "Spring Mail" ,"Spring Boot Scheduler", "Midtrans"],
       role: "Backend Developer",
       achievements: [
         "Led the development of complex backend services requiring high scalability and rigorous security standards.",
@@ -356,7 +425,7 @@ const projectsData = {
       description: "Inventory Management System is an internal enterprise application used within PT Mitra Integrasi Informatika (MII) to systematically track and manage company assets and inventory. As a leading system integrator, MII utilizes this system to monitor the movement of hardware such as servers, laptops, and network devices as well as software licenses used internally or delivered to clients. The system includes features such as end to end asset tracking from warehouse intake to allocation and delivery, automated stock monitoring with low level alerts, detailed audit trails for tracking changes and asset movements, and reporting dashboards that provide insights into asset value, depreciation, and periodic stock mutations.",
       image: "/img/projects/ims.png",
       imageTitle: "IMS",
-      technologies: ["Java", "Spring Boot", "mySQL", "Caffeine", "Java Mail Sender", "Crystal Reports", "Fast Excel", "Spring Boot Scheduler"],
+      technologies: ["Java", "Spring Boot", "Spring Data JPA", "Spring Security" ,"Spring Security"  ,"MySQL", "Caffeine", "Spring Mail", "Crystal Reports", "Fast Excel", "Spring Boot Scheduler", "HTML", "CSS", "Javascript", "Tailwind CSS"],
       role: "Fullstack Developer",
       achievements: [
         "Developed a comprehensive tracking system for asset lifecycle management, from procurement to borrowing status.",
@@ -373,7 +442,7 @@ const projectsData = {
       image: "/img/projects/sirumi.png",
       imageTitle: "House Of Worship Management System",
       imageSubtitle: "City-wide facility management",
-      technologies: ["PHP", "Laravel", "mySQL", "Tailwind CSS", "Chart.js"],
+      technologies: ["PHP", "Laravel", "MySQL", "Tailwind CSS", "Chart.js"],
       role: "Fullstack Developer",
       achievements: [
         "Developed a streamlined registration workflow for religious organizations to register their facilities legally.",
@@ -390,14 +459,16 @@ const projectsData = {
       image: "/img/projects/glorindo-group.png",
       imageTitle: "Book Catalog & E-Reader",
       imageSubtitle: "Digital Library & E-commerce",
-      technologies: ["Javascript", "Express.js", "Vue.js", "mySQL", "Redis"],
+      technologies: ["Javascript", "Typescript",  "Express.js", "Vue.js", "OAuth 2.0", "JWT", "MySQL", "Redis", "AWS S3"],
       role: "Fullstack Developer",
       achievements: [
-        "Architected an end-to-end book management system featuring an online reader and shopping cart functionality.",
-        "Optimized book loading and browsing performance using Redis caching for high-speed content delivery.",
-        "Developed a responsive and interactive frontend with Vue.js to provide a seamless reading experience.",
-        "Integrated a secure transaction system for users to purchase physical or digital copies of books.",
-      ],
+        "Architected and developed an end-to-end digital library and e-commerce platform featuring online reading, book management, and shopping cart functionality.",
+        "Implemented OAuth 2.0 authentication for customers and Basic Authentication for administrative access control.",
+        "Optimized catalog browsing and book content delivery using Redis caching, reducing response times and improving user experience.",
+        "Developed a responsive Vue.js frontend with an interactive reading interface and seamless navigation across devices.",
+        "Integrated AWS S3 for scalable storage and delivery of book covers, digital assets, and reading materials.",
+        "Built secure transaction workflows for purchasing both physical and digital books."
+      ]
     },
   ],
   "Eka Berkat Jaya": [
@@ -407,14 +478,26 @@ const projectsData = {
       image: "/img/projects/projenta.png",
       imageTitle: "Construction Project Management",
       imageSubtitle: "Jira-style construction management",
-      technologies: ["Java", "Spring Boot", "PostgreSQL", "Thymeleaf"],
+      technologies: [
+        "Java",
+        "Spring Boot",
+        "PostgreSQL",
+        "Thymeleaf",
+        "Flyway",
+        "Spring Security",
+        "Tailwind CSS",
+        "MinIO"
+      ],
       role: "Fullstack Developer",
       achievements: [
-        "Designed and developed a task-tracking system to manage complex construction milestones and project timelines.",
-        "Implemented a progress monitoring dashboard to help project managers track resource allocation and deadlines.",
-        "Built a robust backend using Spring Boot and PostgreSQL to handle multi-layered project data and hierarchies.",
-        "Developed automated notification and reporting features to keep stakeholders updated on construction status.",
-      ],
+        "Designed and developed a Jira-inspired task tracking system to manage complex construction milestones, workflows, and project timelines.",
+        "Implemented role-based access control and secured application endpoints using Spring Security with Basic Authentication.",
+        "Built a robust backend using Spring Boot and PostgreSQL to manage multi-layered project data, task hierarchies, and resource allocation.",
+        "Managed database versioning and schema evolution using Flyway migrations, ensuring consistent deployments across environments.",
+        "Integrated MinIO object storage for efficient management of project documents, images, and file attachments while keeping database storage lightweight.",
+        "Developed an interactive project monitoring dashboard with Thymeleaf and Tailwind CSS to provide real-time visibility into project progress and deadlines.",
+        "Implemented automated notifications and reporting features to keep stakeholders informed of construction progress and project status."
+      ]
     },
   ],
   PersonalPal: [
@@ -424,7 +507,7 @@ const projectsData = {
       image: "/img/projects/personal-pal.png",
       imageTitle: "Personal Daily Management App",
       imageSubtitle: "Finance, Health, and Lifestyle Tracking",
-      technologies: ["JavaScript", "Node.js", "Express.js", "mySQL", "Redis", "Kafka", "Microservices", "JWT"],
+      technologies: ["JavaScript", "Node.js", "Express.js", "MySQL", "Redis", "Kafka", "Microservices", "JWT"],
       role: "Backend Developer",
       achievements: [
         "Built backend services for daily financial tracking, including income, expenses, savings, and debt records.",
@@ -537,17 +620,20 @@ const handleKeydown = (e) => {
 
 import Aos from "aos";
 
-watch(() => props.project, async (newVal) => {
-  if (newVal) {
-    await setupModal();
-    await nextTick();
-    Aos.refreshHard();
-    window.addEventListener("keydown", handleKeydown);
-  } else {
-    cleanupModal();
-    window.removeEventListener("keydown", handleKeydown);
+watch(
+  () => props.project,
+  async (newVal, oldVal) => {
+    if (newVal) {
+      await setupModal();
+      await nextTick();
+      Aos.refreshHard();
+      window.addEventListener("keydown", handleKeydown);
+    } else if (oldVal) {
+      cleanupModal();
+      window.removeEventListener("keydown", handleKeydown);
+    }
   }
-});
+);
 
 onUnmounted(() => {
   cleanupModal();

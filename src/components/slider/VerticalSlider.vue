@@ -3,7 +3,7 @@
     <!-- Slider Container -->
     <div
       ref="sliderRef"
-      class="relative w-2 h-32 bg-gray-700 rounded-full cursor-pointer select-none"
+      class="relative w-2.5 h-32 bg-slate-800/90 border border-slate-700/80 rounded-full cursor-pointer select-none shadow-[0_0_12px_rgba(0,0,0,0.6)]"
       @mousedown="handleMouseDown"
       @touchstart.prevent.stop="handleTouchStart"
       @touchmove.prevent.stop="handleTouchMoveOnElement"
@@ -11,7 +11,7 @@
     >
       <!-- Fill Bar -->
       <div
-        class="absolute top-0 left-0 w-full bg-emerald-500 rounded-full transition-all duration-100 pointer-events-none"
+        class="absolute top-0 left-0 w-full bg-gradient-to-b from-cyan-400 via-teal-400 to-emerald-400 rounded-full transition-all duration-100 pointer-events-none shadow-[0_0_12px_rgba(45,212,191,0.8)]"
         :style="{ height: scrollProgress + '%' }"
       ></div>
 
@@ -121,6 +121,15 @@ const handleTouchEnd = () => {
   isDragging.value = false;
 };
 
+let rafId = null;
+const throttledScrollHandler = () => {
+  if (rafId) return;
+  rafId = requestAnimationFrame(() => {
+    updateScrollProgress();
+    rafId = null;
+  });
+};
+
 // Watch scroll container changes
 watch(
   () => props.scrollContainer,
@@ -132,7 +141,7 @@ watch(
       window.removeEventListener("scroll", scrollListener);
     }
 
-    scrollListener = updateScrollProgress;
+    scrollListener = throttledScrollHandler;
 
     if (newContainer) {
       newContainer.addEventListener("scroll", scrollListener, { passive: true });
@@ -152,6 +161,11 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
+  if (rafId) {
+    cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+
   const container = props.scrollContainer;
 
   if (container && scrollListener) {
