@@ -4,15 +4,15 @@
     <Transition name="modal">
       <div
         v-if="project"
-        class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 modal-overlay"
+        class="fixed inset-0 bg-slate-950/85 backdrop-blur-md flex items-center justify-center z-50 p-4 modal-overlay"
         @click.self="$emit('close')"
       >
         <button
           v-if="projectsList.length > 1"
           @click="previousProject"
-          class="absolute left-3 md:left-8 top-1/2 -translate-y-1/2 z-30 w-8 h-8 md:w-16 md:h-16 rounded-full bg-gray-900/70 backdrop-blur-lg border border-emerald-400/40 flex items-center justify-center transition-all duration-300 ease-out hover:bg-emerald-500/10 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-500/30 active:scale-95"
+          class="absolute left-3 md:left-8 top-1/2 -translate-y-1/2 z-30 w-8 h-8 md:w-16 md:h-16 rounded-full bg-slate-900/80 backdrop-blur-lg border border-teal-400/50 flex items-center justify-center transition-all duration-300 ease-out hover:bg-cyan-500/20 hover:border-cyan-300 hover:shadow-[0_0_25px_rgba(56,189,248,0.5)] active:scale-95"
         >
-          <svg class="w-4 h-4 md:w-8 md:h-8 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 md:w-8 md:h-8 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
@@ -20,9 +20,9 @@
         <button
           v-if="projectsList.length > 1"
           @click="nextProject"
-          class="absolute right-3 md:right-8 top-1/2 -translate-y-1/2 z-30 w-8 h-8 md:w-16 md:h-16 rounded-full bg-gray-900/70 backdrop-blur-lg border border-emerald-400/40 flex items-center justify-center transition-all duration-300 ease-out hover:bg-emerald-500/10 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-500/30 active:scale-95"
+          class="absolute right-3 md:right-8 top-1/2 -translate-y-1/2 z-30 w-8 h-8 md:w-16 md:h-16 rounded-full bg-slate-900/80 backdrop-blur-lg border border-teal-400/50 flex items-center justify-center transition-all duration-300 ease-out hover:bg-cyan-500/20 hover:border-cyan-300 hover:shadow-[0_0_25px_rgba(56,189,248,0.5)] active:scale-95"
         >
-          <svg class="w-4 h-4 md:w-8 md:h-8 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 md:w-8 md:h-8 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
           </svg>
         </button>
@@ -33,27 +33,27 @@
         </div>
 
         <div
-          class="bg-linear-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden border border-emerald-500/30 shadow-[0_0_60px_-10px_rgba(16,185,129,0.25)] relative"
+          class="bg-gradient-to-br from-[#0a182f] via-[#091e36] to-[#071322] rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden border border-teal-500/40 shadow-[0_0_60px_rgba(45,212,191,0.25)] relative"
           @wheel.stop
           data-aos="fade-up"
         >
           <!-- Modal Header -->
-          <div class="bg-linear-to-r from-gray-900/90 to-gray-800/90 backdrop-blur-md p-4 md:p-6 border-b border-emerald-500/30">
+          <div class="bg-slate-900/90 backdrop-blur-md p-4 md:p-6 border-b border-teal-500/30">
             <div class="flex items-start justify-between gap-3">
               <div class="flex-1 min-w-0">
                 <h3 class="text-base md:text-2xl font-bold text-white leading-tight">
-                  <span class="text-gray-400 text-sm md:text-base font-normal block md:inline">Project Showcase: </span>
-                  <span class="text-emerald-400">{{ currentProjectData.name }}</span>
+                  <span class="text-slate-400 text-sm md:text-base font-normal block md:inline">Project Showcase: </span>
+                  <span class="bg-gradient-to-r from-cyan-300 via-teal-200 to-emerald-300 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(45,212,191,0.6)]">{{ currentProjectData.name }}</span>
                 </h3>
-                <p v-if="projectsList.length > 1" class="text-gray-400 text-xs md:text-sm mt-1">
+                <p v-if="projectsList.length > 1" class="text-cyan-200/70 text-xs md:text-sm mt-1">
                   {{ currentIndex + 1 }} / {{ projectsList.length }}
                 </p>
               </div>
               <button
                 @click="$emit('close')"
-                class="shrink-0 w-8 h-8 md:w-10 md:h-10 bg-gray-700 hover:bg-gray-600 rounded-lg flex items-center justify-center transition-colors"
+                class="shrink-0 w-8 h-8 md:w-10 md:h-10 bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-cyan-400 rounded-lg flex items-center justify-center transition-colors text-white"
               >
-                <span class="text-white text-xl md:text-2xl leading-none">×</span>
+                <span class="text-xl md:text-2xl leading-none">×</span>
               </button>
             </div>
           </div>
@@ -65,13 +65,13 @@
           >
             <Transition name="slide" mode="out-in" @after-enter="onSlideTransitionEnd">
               <div :key="currentIndex">
-                <p class="text-gray-300 mb-6 text-center text-sm md:text-base">
+                <p class="text-slate-200 mb-6 text-center text-sm md:text-base leading-relaxed">
                   {{ currentProjectData.description }}
                 </p>
 
                 <!-- Project Image -->
-                <div class="bg-gray-700/50 rounded-lg overflow-hidden border border-gray-600 mb-6">
-                  <div v-if="currentProjectData.image" class="relative bg-gradient-to-br from-gray-800 to-gray-900 h-64 md:h-110">
+                <div class="bg-slate-800/60 rounded-xl overflow-hidden border border-slate-700/80 mb-6 shadow-md">
+                  <div v-if="currentProjectData.image" class="relative bg-gradient-to-br from-slate-900 to-[#071322] h-64 md:h-110">
                     <img
                       :src="currentProjectData.image"
                       :alt="currentProjectData.name"
@@ -80,56 +80,56 @@
                       @error="handleImageError"
                       @load="handleImageLoad"
                     />
-                    <div v-if="imageLoading" class="absolute inset-0 flex items-center justify-center bg-gray-900/50">
+                    <div v-if="imageLoading" class="absolute inset-0 flex items-center justify-center bg-slate-950/60 backdrop-blur-xs">
                       <div class="text-center">
-                        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-400 mx-auto mb-2"></div>
-                        <p class="text-gray-400 text-sm">Loading image...</p>
+                        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400 mx-auto mb-2"></div>
+                        <p class="text-cyan-200 text-sm">Loading image...</p>
                       </div>
                     </div>
                   </div>
-                  <div v-else class="aspect-video flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
+                  <div v-else class="aspect-video flex items-center justify-center bg-gradient-to-br from-slate-900 to-[#071322]">
                     <div class="text-center">
-                      <p class="text-gray-400">{{ currentProjectData.imageTitle }}</p>
-                      <p class="text-gray-500 text-sm mt-2">{{ currentProjectData.imageSubtitle }}</p>
+                      <p class="text-slate-300 font-semibold">{{ currentProjectData.imageTitle }}</p>
+                      <p class="text-cyan-200/60 text-sm mt-2">{{ currentProjectData.imageSubtitle }}</p>
                     </div>
                   </div>
                 </div>
 
                 <!-- Project Details -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                  <div class="bg-gray-700/30 rounded-lg p-4 border border-gray-600">
-                    <h4 class="text-center text-emerald-400 font-semibold mb-3">Technologies</h4>
+                  <div class="bg-slate-800/40 rounded-xl p-4 border border-teal-500/25">
+                    <h4 class="text-center bg-gradient-to-r from-cyan-300 to-teal-300 bg-clip-text text-transparent font-semibold mb-3 drop-shadow-[0_0_10px_rgba(56,189,248,0.3)]">Technologies</h4>
                     <div class="flex justify-center flex-wrap gap-2">
                       <span
                         v-for="tech in currentProjectData.technologies"
                         :key="tech"
-                        class="bg-gray-800 text-emerald-300 px-3 py-1 rounded-full text-xs md:text-sm border border-emerald-500/30"
+                        class="bg-slate-800/90 text-cyan-200 px-3 py-1 rounded-full text-xs md:text-sm border border-teal-500/40 shadow-[0_0_8px_rgba(45,212,191,0.2)]"
                       >
                         {{ tech }}
                       </span>
                     </div>
                   </div>
-                  <div class="bg-gray-700/30 rounded-lg p-4 border border-gray-600 flex flex-col items-center justify-center min-h-[120px]">
-                    <h4 class="text-emerald-400 font-semibold mb-2 text-center">Role</h4>
-                      <div class="flex-1 flex items-center justify-center">
-                    <p class="text-center text-white font-semibold text-sm md:text-base tracking-wide px-2">{{ currentProjectData.role }}</p>
-                  </div>
+                  <div class="bg-slate-800/40 rounded-xl p-4 border border-teal-500/25 flex flex-col items-center justify-center min-h-[120px]">
+                    <h4 class="text-center bg-gradient-to-r from-cyan-300 to-teal-300 bg-clip-text text-transparent font-semibold mb-2 drop-shadow-[0_0_10px_rgba(56,189,248,0.3)]">Role</h4>
+                    <div class="flex-1 flex items-center justify-center">
+                      <p class="text-center text-white font-semibold text-sm md:text-base tracking-wide px-2">{{ currentProjectData.role }}</p>
+                    </div>
                   </div>
                 </div>
 
                 <!-- Key Achievements -->
                 <div
                   v-if="currentProjectData.achievements && currentProjectData.achievements.length > 0"
-                  class="bg-gray-700/30 rounded-lg p-4 border border-gray-600"
+                  class="bg-slate-800/40 rounded-xl p-4 border border-teal-500/25"
                 >
-                  <h4 class="text-emerald-400 font-semibold mb-3">Key Achievements</h4>
+                  <h4 class="bg-gradient-to-r from-cyan-300 to-teal-300 bg-clip-text text-transparent font-semibold mb-3 drop-shadow-[0_0_10px_rgba(56,189,248,0.3)]">Key Achievements</h4>
                   <ul class="space-y-2">
                     <li
                       v-for="achievement in currentProjectData.achievements"
                       :key="achievement"
-                      class="text-gray-300 text-sm flex items-start gap-2"
+                      class="text-slate-300 text-sm flex items-start gap-2"
                     >
-                      <span class="text-emerald-400 mt-1">✓</span>
+                      <span class="text-cyan-400 font-bold mt-1">✓</span>
                       <span>{{ achievement }}</span>
                     </li>
                   </ul>

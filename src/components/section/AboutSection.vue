@@ -1,14 +1,29 @@
-<!-- AboutSection -->
 <template>
   <div
-    class="relative overflow-hidden min-h-screen bg-gradient-to-br from-gray-900 via-gray-900 to-gray-900 text-gray-100 p-4 sm:p-8"
+    class="relative overflow-hidden min-h-screen bg-gradient-to-b from-[#071322] via-[#091a32] to-[#071322] text-slate-100 p-4 sm:p-8 pb-12 sm:pb-16"
   >
-    <div class="absolute inset-0 opacity-20 pointer-events-none overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+      <!-- Top-center radiant cyan-teal aura -->
       <div
-        class="absolute right-10 w-96 h-96 bg-emerald-600 rounded-full blur-3xl"
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[30rem] bg-[radial-gradient(ellipse_at_top,rgba(56,189,248,0.22)_0%,rgba(45,212,191,0.15)_40%,transparent_75%)]"
       ></div>
+      <!-- Right top luminous Cyan-Sky orb -->
       <div
-        class="absolute top-150 left-100 w-72 h-72 bg-emerald-500 rounded-full blur-3xl"
+        class="absolute -right-10 top-24 w-[30rem] h-[30rem] bg-gradient-to-br from-cyan-400/35 via-sky-500/25 to-transparent rounded-full blur-[90px] animate-pulse"
+        style="animation-duration: 8s"
+      ></div>
+      <!-- Left middle luminous Emerald-Teal orb -->
+      <div
+        class="absolute -left-10 top-96 w-[28rem] h-[28rem] bg-gradient-to-tr from-emerald-400/35 via-teal-400/30 to-transparent rounded-full blur-[90px] animate-pulse"
+        style="animation-duration: 10s"
+      ></div>
+      <!-- Bottom right luminous Indigo/Cyan orb -->
+      <div
+        class="absolute bottom-36 right-1/4 w-[32rem] h-[32rem] bg-gradient-to-tl from-indigo-500/20 via-cyan-500/15 to-transparent rounded-full blur-[100px]"
+      ></div>
+      <!-- Smooth blending mask to next section -->
+      <div
+        class="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-b from-transparent via-[#071322]/70 to-[#071322] pointer-events-none"
       ></div>
     </div>
 
@@ -17,21 +32,21 @@
       <div class="mb-16">
         <div class="flex justify-center">
           <h1 class="text-5xl font-bold mb-4">
-            <span class="text-gray-300">👋 Hi, I'm </span>
-            <span class="text-emerald-400">Fajar</span>
+            <span class="text-slate-300">👋 Hi, I'm </span>
+            <span class="bg-gradient-to-r from-emerald-300 via-teal-200 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(45,212,191,0.65)] font-extrabold">Fajar</span>
           </h1>
         </div>
-        <p class="text-xl text-gray-400 italic mb-6">
+        <p class="text-xl text-cyan-200/80 italic mb-6">
           Turning concepts into code and visions into reality
         </p>
         <div class="flex justify-center">
-          <p class="text-gray-300 max-w-3xl leading-relaxed">
+          <p class="text-slate-300 max-w-3xl leading-relaxed text-base sm:text-lg">
             As a
-            <span class="text-emerald-400 font-semibold"
+            <span class="bg-gradient-to-r from-cyan-300 to-teal-300 bg-clip-text text-transparent font-semibold drop-shadow-[0_0_12px_rgba(56,189,248,0.4)]"
               >Fullstack Developer</span
             >
             with a strong focus on
-            <span class="text-emerald-400 font-semibold"
+            <span class="bg-gradient-to-r from-teal-300 to-emerald-300 bg-clip-text text-transparent font-semibold drop-shadow-[0_0_12px_rgba(45,212,191,0.4)]"
               >Backend Development using Java</span
             >, I've built robust, scalable applications that are fast, secure,
             and maintainable. I'm quietly confident, naturally curious, and
@@ -45,11 +60,11 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
         <!-- Technologies Section (Left) -->
         <div
-          class="border-gray-700/50 rounded-2xl p-8 hover:border-emerald-500/30 transition-all duration-300"
+          class="bg-slate-900/50 backdrop-blur-md border border-teal-500/25 rounded-2xl p-6 sm:p-8 hover:border-cyan-400/50 hover:shadow-[0_0_35px_rgba(56,189,248,0.2)] transition-all duration-300"
         >
           <div class="flex items-center gap-3 mb-8 justify-center">
             <div
-              class="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center"
+              class="w-10 h-10 bg-gradient-to-br from-cyan-500/20 to-teal-500/20 border border-teal-500/40 rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(45,212,191,0.3)]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +76,7 @@
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="text-emerald-400"
+                class="text-cyan-300"
               >
                 <rect width="16" height="16" x="4" y="4" rx="2"></rect>
                 <rect width="6" height="6" x="9" y="9" rx="1"></rect>
@@ -75,7 +90,7 @@
                 <path d="M9 20v2"></path>
               </svg>
             </div>
-            <h2 class="text-2xl font-bold text-emerald-400">Technologies</h2>
+            <h2 class="text-2xl font-bold bg-gradient-to-r from-cyan-300 to-teal-200 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(56,189,248,0.5)]">Technologies</h2>
           </div>
           <div class="grid grid-cols-4 sm:grid-cols-5 gap-4">
             <div
@@ -84,7 +99,7 @@
               class="flex flex-col items-center gap-1 group cursor-pointer"
             >
               <div
-                class="w-14 h-14 bg-gray-800/50 border border-gray-700 rounded-xl p-2.5 flex items-center justify-center transition-all duration-300 group-hover:bg-emerald-500/10 group-hover:border-emerald-500/50 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-emerald-500/20"
+                class="w-14 h-14 bg-slate-800/80 border border-slate-700/80 rounded-xl p-2.5 flex items-center justify-center transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-cyan-500/20 group-hover:to-teal-500/20 group-hover:border-cyan-400 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(56,189,248,0.4)]"
               >
                 <img
                   :src="tech.icon"
@@ -95,7 +110,7 @@
                 />
               </div>
               <span
-                class="text-xs text-gray-500 text-center group-hover:text-emerald-400 transition-colors font-medium"
+                class="text-xs text-slate-400 text-center group-hover:text-cyan-300 transition-colors font-medium"
               >
                 {{ tech.name }}
               </span>
@@ -107,7 +122,7 @@
         <div class="flex flex-col gap-6">
           <div class="mt-7 flex items-center gap-3 mb-2 justify-center">
             <div
-              class="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center"
+              class="w-10 h-10 bg-gradient-to-br from-teal-500/20 to-emerald-500/20 border border-teal-500/40 rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(45,212,191,0.3)]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +134,7 @@
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="text-emerald-400"
+                class="text-teal-300"
               >
                 <path
                   d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
@@ -127,16 +142,16 @@
                 <circle cx="12" cy="12" r="3"></circle>
               </svg>
             </div>
-            <h2 class="text-2xl font-bold text-emerald-400">Main Skills</h2>
+            <h2 class="text-2xl font-bold bg-gradient-to-r from-teal-200 to-emerald-300 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(45,212,191,0.5)]">Main Skills</h2>
           </div>
 
           <!-- Backend Developer -->
           <div
-            class="bg-gray-800/30 border border-gray-700/50 rounded-2xl p-6 hover:border-emerald-400 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/20 group"
+            class="bg-slate-900/60 backdrop-blur-md border border-teal-500/30 rounded-2xl p-6 hover:border-cyan-400/60 hover:shadow-[0_0_30px_rgba(56,189,248,0.25)] transition-all duration-300 group"
           >
             <div class="flex items-center gap-3 mb-4 justify-center">
               <div
-                class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors"
+                class="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-teal-500/20 border border-teal-500/30 rounded-xl flex items-center justify-center group-hover:border-cyan-400 group-hover:shadow-[0_0_15px_rgba(56,189,248,0.4)] transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -148,19 +163,19 @@
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="text-emerald-400"
+                  class="text-cyan-300"
                 >
                   <polyline points="16 18 22 12 16 6"></polyline>
                   <polyline points="8 6 2 12 8 18"></polyline>
                 </svg>
               </div>
               <h3
-                class="text-xl font-bold text-gray-100 group-hover:text-emerald-400 transition-colors"
+                class="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors"
               >
                 Backend Developer
               </h3>
             </div>
-            <p class="text-gray-400 leading-relaxed text-sm">
+            <p class="text-slate-300 leading-relaxed text-sm">
               Building robust and scalable server-side applications with modern
               frameworks like Spring Boot, Quarkus, Express.js, and Fiber.
               Expertise in microservices architecture, REST APIs, JWT
@@ -170,11 +185,11 @@
 
           <!-- Frontend Developer -->
           <div
-            class="bg-gray-800/30 border border-gray-700/50 rounded-2xl p-6 hover:border-emerald-500/50 hover:bg-gray-800/40 transition-all duration-300 group"
+            class="bg-slate-900/60 backdrop-blur-md border border-teal-500/30 rounded-2xl p-6 hover:border-emerald-400/60 hover:shadow-[0_0_30px_rgba(52,211,153,0.25)] transition-all duration-300 group"
           >
             <div class="flex items-center gap-3 mb-4 justify-center">
               <div
-                class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors"
+                class="w-12 h-12 bg-gradient-to-br from-teal-500/20 to-emerald-500/20 border border-emerald-500/30 rounded-xl flex items-center justify-center group-hover:border-emerald-400 group-hover:shadow-[0_0_15px_rgba(52,211,153,0.4)] transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -186,7 +201,7 @@
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="text-emerald-400"
+                  class="text-teal-300"
                 >
                   <circle
                     cx="13.5"
@@ -213,12 +228,12 @@
                 </svg>
               </div>
               <h3
-                class="text-xl font-bold text-gray-100 group-hover:text-emerald-400 transition-colors"
+                class="text-xl font-bold text-white group-hover:text-teal-300 transition-colors"
               >
                 Frontend Developer
               </h3>
             </div>
-            <p class="text-gray-400 leading-relaxed text-sm">
+            <p class="text-slate-300 leading-relaxed text-sm">
               Crafting intuitive and responsive user interfaces with Vue.js,
               HTML5, CSS3, and modern UI frameworks. Strong focus on user
               experience and creating visually polished applications with

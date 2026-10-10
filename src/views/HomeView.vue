@@ -56,9 +56,11 @@ document.body.style.overflow = "hidden";
       <VerticalSlider />
     </div>
 
-    <AboutSection />
-    <ExperienceAndProjectSection />
-    <FooterSection />
-    <Navbar />
+    <div class="relative bg-[#071322] min-h-screen text-slate-100">
+      <AboutSection />
+      <ExperienceAndProjectSection />
+      <FooterSection />
+      <Navbar />
+    </div>
   </template>
 </template>

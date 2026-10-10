@@ -18,7 +18,7 @@
         @click="isOpen = true"
         aria-label="Open navigation menu"
         :class="{ 'animate-soft-bounce': !isOpen }"
-        class="flex items-center pointer-events-auto justify-center w-12 h-12 rounded-full! bg-gray-900/80 backdrop-blur-md border border-emerald-400/40 text-emerald-400 transition-all hover:bg-emerald-400/10 hover:scale-110 shadow-lg shadow-black/50"
+        class="flex items-center pointer-events-auto justify-center w-12 h-12 rounded-full! bg-slate-900/85 backdrop-blur-lg border border-teal-400/50 text-cyan-300 transition-all hover:bg-cyan-500/15 hover:border-cyan-300 hover:shadow-[0_0_25px_rgba(56,189,248,0.5)] hover:scale-110 shadow-xl shadow-black/50"
       >
         <svg
           class="w-6 h-6"
@@ -38,7 +38,7 @@
       <div
         v-else
         key="dock-menu"
-        class="pointer-events-auto bg-gray-900/90 backdrop-blur-md border border-emerald-400/30 px-3 sm:px-6 py-2 rounded-full flex items-center justify-center gap-1 sm:gap-4 md:gap-6 shadow-2xl max-w-full"
+        class="pointer-events-auto bg-slate-900/90 backdrop-blur-xl border border-teal-400/40 px-3 sm:px-6 py-2 rounded-full flex items-center justify-center gap-1 sm:gap-4 md:gap-6 shadow-[0_0_35px_rgba(45,212,191,0.25)] max-w-full"
       >
         <!-- GitHub -->
         <a
@@ -46,7 +46,7 @@
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"
-          class="group flex items-center gap-2 py-2 px-3 sm:px-4 rounded-full transition-all duration-300 hover:bg-emerald-500/10"
+          class="group flex items-center gap-2 py-2 px-3 sm:px-4 rounded-full transition-all duration-300 hover:bg-gradient-to-r hover:from-cyan-500/15 hover:to-teal-500/15"
           @mouseenter="
             hoveredItem = 'github';
             resetTimer();
@@ -54,7 +54,7 @@
           @mouseleave="hoveredItem = null"
         >
           <svg
-            class="w-5 h-5 text-emerald-400 group-hover:text-emerald-300 transition-colors shrink-0"
+            class="w-5 h-5 text-cyan-300 group-hover:text-teal-200 transition-colors shrink-0"
             fill="currentColor"
             viewBox="0 0 24 24"
           >
@@ -68,7 +68,7 @@
                 ? 'max-w-xs opacity-100'
                 : 'max-w-0 opacity-0'
             "
-            class="text-emerald-400 overflow-hidden transition-all duration-300 hidden sm:inline-block text-sm whitespace-nowrap"
+            class="text-cyan-300 group-hover:text-teal-200 overflow-hidden transition-all duration-300 hidden sm:inline-block text-sm whitespace-nowrap font-medium"
             >GitHub</span
           >
         </a>
@@ -77,7 +77,7 @@
         <a
           href="mailto:fajar.anwarimaulana11@gmail.com"
           aria-label="Email"
-          class="group relative flex items-center gap-2 py-2 px-3 sm:px-4 rounded-full transition-all duration-300 hover:bg-emerald-500/10"
+          class="group relative flex items-center gap-2 py-2 px-3 sm:px-4 rounded-full transition-all duration-300 hover:bg-gradient-to-r hover:from-cyan-500/15 hover:to-teal-500/15"
           @mouseenter="
             hoveredItem = 'email';
             resetTimer();
@@ -86,7 +86,7 @@
         >
           <div class="relative shrink-0">
             <svg
-              class="w-5 h-5 text-emerald-400 group-hover:text-emerald-300 transition-colors duration-300"
+              class="w-5 h-5 text-cyan-300 group-hover:text-teal-200 transition-colors duration-300"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -100,7 +100,7 @@
             </svg>
           </div>
           <span
-            class="text-emerald-400 group-hover:text-emerald-300 text-sm whitespace-nowrap transition-all duration-300 hidden sm:inline-block"
+            class="text-cyan-300 group-hover:text-teal-200 text-sm whitespace-nowrap transition-all duration-300 hidden sm:inline-block font-medium"
             :class="
               hoveredItem === 'email'
                 ? 'opacity-100 max-w-xs'
@@ -117,7 +117,7 @@
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn"
-          class="group relative flex items-center gap-2 py-2 px-3 sm:px-4 rounded-full transition-all duration-300 hover:bg-emerald-500/10"
+          class="group relative flex items-center gap-2 py-2 px-3 sm:px-4 rounded-full transition-all duration-300 hover:bg-gradient-to-r hover:from-cyan-500/15 hover:to-teal-500/15"
           @mouseenter="
             hoveredItem = 'linkedin';
             resetTimer();
@@ -126,7 +126,7 @@
         >
           <div class="relative shrink-0">
             <svg
-              class="w-4 h-4 text-emerald-400 group-hover:text-emerald-300 transition-colors duration-300"
+              class="w-4 h-4 text-cyan-300 group-hover:text-teal-200 transition-colors duration-300"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
@@ -136,7 +136,7 @@
             </svg>
           </div>
           <span
-            class="text-emerald-400 group-hover:text-emerald-300 text-sm whitespace-nowrap transition-all duration-300 hidden sm:inline-block"
+            class="text-cyan-300 group-hover:text-teal-200 text-sm whitespace-nowrap transition-all duration-300 hidden sm:inline-block font-medium"
             :class="
               hoveredItem === 'linkedin'
                 ? 'opacity-100 max-w-xs'
